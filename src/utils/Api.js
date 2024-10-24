@@ -1,7 +1,3 @@
-// function onResponse(res) {
-//     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res}`);
-// }
-
 class Api {
     constructor({ url, headers }) {
         this._url = url;

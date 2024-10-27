@@ -1,8 +1,8 @@
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import {CardsContext} from "../contexts/CardsContext";
-import {useContext} from "react";
-import {ICard, IUserInfo} from "../utils/api/types";
+import { CardsContext } from "../contexts/CardsContext";
+import { useContext } from "react";
+import { ICard, IUserInfo } from "../utils/api/types";
 
 interface IProps {
 	onEditAvatar: () => void,
@@ -16,8 +16,6 @@ interface IProps {
 export default function Main(props: IProps) {
 	const currentUser: IUserInfo = useContext(CurrentUserContext);
 	const cards: ICard[] = useContext(CardsContext);
-
-	console.log('render main', currentUser)
 
 	return (
 		<main className="content">

@@ -12,7 +12,7 @@ import {ChangedCard, ChangedUserInfo, ICard, IUserInfo} from "../utils/api/types
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { CardsContext } from '../contexts/CardsContext';
 
-function App() {
+export default function App() {
 	const defaultUser: IUserInfo = {
 		_id: '',
 		about: '',
@@ -32,8 +32,6 @@ function App() {
 
 	// обновление информации пользователя
 	useEffect(() => {
-		console.log('render getUserInfo')
-
 		api
 			.getUserInfo()
 			.then((dataUser: IUserInfo) => {
@@ -46,8 +44,6 @@ function App() {
 
 	// обновление аватара пользователя
 	useEffect(() => {
-		console.log('render getCards')
-
 		api
 			.getCards()
 			.then((dataCards) => {
@@ -191,5 +187,3 @@ function App() {
 		</div>
 	);
 }
-
-export default App;

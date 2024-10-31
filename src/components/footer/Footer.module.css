@@ -1,0 +1,17 @@
+.footer {
+	margin-top: auto;
+	padding-top: 50px;
+}
+
+.footer__date {
+	color: #545454;
+	font-size: 18px;
+	line-height: 22px;
+	padding-bottom: 10px;
+}
+
+@media screen and (max-width: 880px) {
+	.footer__date {
+		padding-left: 20px;
+	}
+}

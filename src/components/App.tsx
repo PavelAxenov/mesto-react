@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import "../index.css";
-import Header from './Header';
+import Header from './header/Header';
 import Main from './Main';
-import Footer from './Footer';
+import Footer from './footer/Footer';
 import ImagePopup from "./ImagePopup";
 import api from "../utils/api/api";
 import EditProfilePopup from "./EditProfilePopup";
@@ -13,14 +13,6 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { CardsContext } from '../contexts/CardsContext';
 
 export default function App() {
-	const defaultUser: IUserInfo = {
-		_id: '',
-		about: '',
-		avatar: '',
-		cohort: '',
-		name: '',
-	}
-
 	const [isEditProfilePopupOpen, setProfilePopup] = useState<boolean>(false);
 	const [isAddPlacePopupOpen, setNewPlacePopup] = useState<boolean>(false);
 	const [isEditAvatarPopupOpen, setAvatarPopup] = useState<boolean>(false);
@@ -28,7 +20,7 @@ export default function App() {
 	const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
 	const [cards, setCards] = useState<ICard[]>([]);
 
-	const [currentUser, setCurrentUser] = useState<IUserInfo | null>(defaultUser);
+	const [currentUser, setCurrentUser] = useState<IUserInfo | null>(null);
 
 	// обновление информации пользователя
 	useEffect(() => {
@@ -53,8 +45,6 @@ export default function App() {
 				console.log("Что-то не так с карточками.", err);
 			});
 	}, []);
-
-	console.log('render App')
 
 	// Попап редактирования профиля
 	function handleEditProfileClick() {
@@ -139,6 +129,7 @@ export default function App() {
 			<CurrentUserContext.Provider value = {currentUser}>
 				<div className="page">
 					<Header />
+
 					<CardsContext.Provider value = {cards}>
 						<Main
 							onEditAvatar={handleEditAvatarClick}

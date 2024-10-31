@@ -1,0 +1,25 @@
+.places {
+	margin-top: 50px;
+}
+
+.places__cards {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+	gap: 20px 17px;
+	justify-content: center;
+}
+
+@media screen and (max-width: 920px) {
+	.places__cards {
+		padding: 0 20px 0;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.places {
+		margin-top: 36px;
+	}
+}

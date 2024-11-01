@@ -1,6 +1,0 @@
-.element__position {
-    display: grid;
-    grid-template-columns: 1fr 0.2fr;
-    min-height: 80px;
-    align-items: center;
-}

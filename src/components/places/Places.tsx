@@ -1,11 +1,10 @@
 import { ICard } from "../../utils/api/types";
 import PlaceCard from "./PlaceCard";
-import { useContext } from "react";
+import {useContext} from "react";
 import { CardsContext } from "../../contexts/CardsContext";
 import styles from "./Places.module.css"
 
 interface IProps {
-	onCardClick: (card: ICard) => void,
 	onCardLike: (card: ICard) => void,
 	onCardDelete: (card: ICard) => void,
 }
@@ -22,7 +21,6 @@ export default function Places(props: IProps) {
 							<PlaceCard
 								key={card._id}
 								card={card}
-								onCardClick={props.onCardClick}
 								onCardLike={props.onCardLike}
 								onCardDelete={props.onCardDelete}
 							/>)

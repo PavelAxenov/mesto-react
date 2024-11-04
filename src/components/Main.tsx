@@ -6,7 +6,6 @@ interface IProps {
 	onEditAvatar: () => void,
 	onEditProfile: () => void,
 	onAddPlace: () => void,
-	onCardClick: (card: ICard) => void,
 	onCardLike: (card: ICard) => void,
 	onCardDelete: (card: ICard) => void,
 }
@@ -22,7 +21,6 @@ export default function Main(props: IProps) {
 			/>
 
 			<Places
-				onCardClick={props.onCardClick}
 				onCardLike={props.onCardLike}
 				onCardDelete={props.onCardDelete}
 			/>

@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 import "../../index.css";
 import Header from '../header/Header';
 import Main from '../Main';
 import Footer from '../footer/Footer';
-import ImagePopup from "../popups/img-popup/ImagePopup";
 import api from "../../utils/api/api";
 import EditProfilePopup from "../popups/edit-profile/EditProfilePopup";
 import EditAvatarPopup from "../popups/edit-avatar/EditAvatarPopup";
 import AddPlacePopup from '../popups/add-place/AddPlacePopup';
-import { ChangedCard, ChangedUserInfo, ICard, IUserInfo } from "../../utils/api/types";
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { CardsContext } from '../../contexts/CardsContext';
+import {ChangedCard, ChangedUserInfo, ICard, IUserInfo} from "../../utils/api/types";
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
+import {CardsContext} from '../../contexts/CardsContext';
 import styles from './App.module.css'
 
 export default function App() {
@@ -18,7 +17,6 @@ export default function App() {
 	const [isAddPlacePopupOpen, setNewPlacePopup] = useState<boolean>(false);
 	const [isEditAvatarPopupOpen, setAvatarPopup] = useState<boolean>(false);
 
-	const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
 	const [cards, setCards] = useState<ICard[]>([]);
 
 	const [currentUser, setCurrentUser] = useState<IUserInfo | null>(null);
@@ -62,15 +60,10 @@ export default function App() {
 		setAvatarPopup(true);
 	}
 
-	function handleCardClick(cardInfo: ICard) {
-		setSelectedCard(cardInfo)
-	}
-
 	function closeAllPopups() {
 		setProfilePopup(false);
 		setNewPlacePopup(false);
 		setAvatarPopup(false);
-		setSelectedCard(null);
 	}
 
 	// Лайки
@@ -136,7 +129,6 @@ export default function App() {
 							onEditAvatar={handleEditAvatarClick}
 							onEditProfile={handleEditProfileClick}
 							onAddPlace={handleAddPlaceClick}
-							onCardClick={handleCardClick}
 							onCardLike={handleCardLike}
 							onCardDelete={handleCardDelete}
 						/>
@@ -169,10 +161,6 @@ export default function App() {
 							onClose={closeAllPopups}
 							onAddPlace={handleAddPlaceSubmit}
 						/>
-					}
-
-					{selectedCard &&
-						<ImagePopup card={selectedCard} onClose={closeAllPopups} />
 					}
 				</div>
 			</CurrentUserContext.Provider>

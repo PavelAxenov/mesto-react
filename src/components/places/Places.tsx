@@ -10,6 +10,7 @@ import {
 	setCardsByLike, setDeletedCard, setLikedCard
 } from "../../store/reducers/CardsSlice";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import CardSkeleton from "./CardSkeleton";
 
 const Places = () => {
 	const dispatch = useAppDispatch()
@@ -48,9 +49,7 @@ const Places = () => {
 
 	if (placesLoadingStatus === 'loading') {
 		return (
-			<div>
-				Loading places...
-			</div>
+			<CardSkeleton />
 		)
 	}
 

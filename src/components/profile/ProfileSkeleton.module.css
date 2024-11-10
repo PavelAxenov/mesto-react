@@ -1,0 +1,63 @@
+.skeletonContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 40px;
+}
+
+.profileSkeletonContainer {
+	display: flex;
+	gap: 30px;
+}
+
+.avatarSkeleton {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	animation: shine 1s ease infinite;
+}
+
+.infoSkeletonContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.titleSkeleton {
+	width: 200px;
+	height: 48px;
+	border-radius: 4px;
+	margin-top: 23px;
+	align-self: flex-end;
+	animation: shine 1s ease infinite;
+}
+
+.textSkeleton {
+	width: 170px;
+	height: 22px;
+	border-radius: 4px;
+	animation: shine 1s ease infinite;
+}
+
+.addCardSkeleton {
+	width: 150px;
+	height: 50px;
+	border-radius: 4px;
+	animation: shine 1s ease infinite;
+}
+
+@keyframes shine {
+	0% {
+		background-color: #e2e5e7;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(90deg, #e2e5e7, rgba(176, 176, 176, 0.6) 40px, #e2e5e7);
+		background-position: -200px;
+	}
+
+	100% {
+		background-color: #e2e5e7;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(90deg, #e2e5e7, rgba(176, 176, 176, 0.6) 40px, #e2e5e7);
+		background-position: 200px;
+	}
+}

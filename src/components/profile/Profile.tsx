@@ -9,6 +9,7 @@ import EditProfilePopup from "../popups/edit-profile/EditProfilePopup";
 import {ChangedCardType, ChangedUserInfoType} from "../../utils/api/types";
 import AddPlacePopup from "../popups/add-place/AddPlacePopup";
 import {addCard, setAddedCard} from "../../store/reducers/CardsSlice";
+import ProfileSkeleton from "./ProfileSkeleton";
 
 const Profile = () => {
 	const [isEditAvatarPopupOpen, setAvatarPopup] = useState<boolean>(false);
@@ -20,7 +21,7 @@ const Profile = () => {
 
 	const dispatch = useAppDispatch()
 
-	// получение информации пользователя
+	// // получение информации пользователя
 	useEffect(() => {
 		dispatch(fetchUser())
 	}, [])
@@ -69,7 +70,7 @@ const Profile = () => {
 
 	if (userLoadingStatus === 'loading') {
 		return (
-			<div>Loading profile...</div>
+			<ProfileSkeleton />
 		)
 	}
 

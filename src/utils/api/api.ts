@@ -10,10 +10,6 @@ class Api {
 		this._headers = headers;
 	}
 
-	_checkResponse(res: Response) {
-		return res.ok ? res.json() : Promise.reject(`Ошибка: ${res}`);
-	}
-
 	// Получает все карточки
 	async getCards() {
 		return fetch(`${this._url}/cards`, {

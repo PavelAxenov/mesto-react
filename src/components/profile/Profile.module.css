@@ -5,12 +5,12 @@
 	padding-top: 40px;
 }
 
-.profile-container {
+.profileContainer {
 	display: flex;
 	gap: 30px;
 }
 
-.avatar-container {
+.avatarContainer {
 	position: relative;
 }
 
@@ -21,7 +21,7 @@
 	object-fit: cover;
 }
 
-.avatar-edit-btn {
+.avatarEditBtn {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -33,7 +33,7 @@
 	cursor: pointer;
 }
 
-.avatar-edit-btn:hover {
+.avatarEditBtn:hover {
 	background: rgba(0, 0, 0, 0.8);
 	background-image: url(../../images/eddit-button.svg);
 	background-repeat: no-repeat;
@@ -41,13 +41,13 @@
 	background-size: 26px;
 }
 
-.profile-info {
+.profileInfo {
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 	gap: 8px 24px;
 }
 
-.profile-name {
+.profileName {
 	max-width: 500px;
 	margin: 0;
 	padding: 0;
@@ -60,7 +60,7 @@
 	overflow: hidden;
 }
 
-.profile-edit-btn {
+.profileEditBtn {
 	padding: 0;
 	margin: 0 0 10px;
 	width: 24px;
@@ -74,11 +74,11 @@
 	cursor: pointer;
 }
 
-.profile-edit-btn:hover {
+.profileEditBtn:hover {
 	opacity: 0.6;
 }
 
-.profile-description {
+.profileDescription {
 	margin: 0;
 	padding: 0;
 	font-size: 18px;
@@ -89,7 +89,7 @@
 	overflow: hidden;
 }
 
-.profile-add-button {
+.addBtn {
 	padding: 0;
 	margin: 0;
 	width: 150px;

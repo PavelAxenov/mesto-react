@@ -222,6 +222,12 @@ button:-moz-focusring,
   outline: 1px dotted ButtonText;
 }
 
+button {
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
 /**
  * Correct the padding in Firefox.
  */

@@ -4,7 +4,6 @@ export interface IApiConstructor {
 	headers: Record<string, string>
 }
 
-
 export interface IUserInfo {
 	_id: string,
 	name: string,
@@ -13,10 +12,11 @@ export interface IUserInfo {
 	cohort: string
 }
 
-export type ChangedUserInfo = Pick<IUserInfo, 'name' | 'about'>
+export type ChangedUserInfoType = Pick<IUserInfo, 'name' | 'about'>
 
 export interface IDeletedCardResponse {
 	message: string;
+	card: ICard
 }
 
 export interface ICard {
@@ -27,4 +27,4 @@ export interface ICard {
 	likes: IUserInfo[],
 	createdAt: string
 }
-export type ChangedCard = Pick<ICard, 'name' | 'link'>
+export type ChangedCardType = Pick<ICard, 'name' | 'link'>

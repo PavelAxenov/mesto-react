@@ -6,7 +6,6 @@ interface IProps {
 	name: string,
 	isOpen: boolean,
 	isLoading: boolean,
-	onClose: () => void,
 	onCardDelete: () => void,
 }
 
@@ -18,9 +17,7 @@ function DeleteCardPopup(props: IProps) {
 
 	return (
 		<PopupWithForm
-			isOpen={props.isOpen}
 			onSubmit={handleSubmit}
-			onClose={props.onClose}
 			name={props.name}
 		>
 			<h2 className={styles['popup__title']}>Вы уверены ?</h2>

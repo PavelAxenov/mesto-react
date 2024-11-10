@@ -4,11 +4,17 @@ import {ModalType} from "./type";
 
 interface IProps {
 	type?: ModalType;
-	children: ReactNode;
+	children: ReactNode | null;
 	onClose: () => void,
 }
 
-export default function Modal(props: IProps) {
+const defaultProps: IProps = {
+	type: ModalType.Default,
+	children: null,
+	onClose: () => {}
+}
+
+const Modal = (props: IProps = defaultProps) => {
 	const modalClasses: string = `${props.type === ModalType.Image ? styles.modalImage : styles.modal}`
 
 	return (
@@ -20,3 +26,5 @@ export default function Modal(props: IProps) {
 		</div>
 	)
 }
+
+export default Modal;

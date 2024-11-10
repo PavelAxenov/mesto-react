@@ -5,7 +5,7 @@ interface IProps {
 	card: ICard,
 }
 
-export default function ImagePopup(props: IProps) {
+const ImagePopup = (props: IProps) => {
 	return (
 		<div className={styles.imgContainer}>
 			<img
@@ -18,3 +18,5 @@ export default function ImagePopup(props: IProps) {
 		</div>
 	);
 }
+
+export default ImagePopup;

@@ -1,4 +1,5 @@
-import {ChangedCard, IApiConstructor, ICard, IDeletedCardResponse, IUserInfo} from "./types";
+import {ChangedCardType, IApiConstructor, ICard, IDeletedCardResponse, IUserInfo} from "./types";
+import {changeUserAvatar, changeUserInfo} from "../../store/reducers/UserSlice";
 
 class Api {
 	private readonly _url: string;
@@ -14,23 +15,21 @@ class Api {
 	}
 
 	// Получает все карточки
-	async getCards(): Promise<ICard[]> {
+	async getCards() {
 		return fetch(`${this._url}/cards`, {
 			headers: this._headers
 		})
-			.then(res => res.json())
 	}
 
 	// Получает информацию о пользователе
-	getUserInfo(): Promise<IUserInfo> {
+	getUserInfo() {
 		return fetch(`${this._url}/users/me`, {
 			headers: this._headers,
 		})
-			.then(this._checkResponse)
 	}
 
 	// Отправляет информацию о пользователе на сервер
-	sendProfileDatasToServer(name: string, about: string): Promise<IUserInfo> {
+	changeUserInfo(name: string, about: string) {
 		return fetch(`${this._url}/users/me`, {
 			method: 'PATCH',
 			headers: this._headers,
@@ -39,21 +38,19 @@ class Api {
 				about,
 			})
 		})
-			.then(this._checkResponse)
 	}
 
 	// Отправляет аватар пользователя на сервер
-	sendAvatarToServer(avatar: string): Promise<IUserInfo> {
+	changeUserAvatar(avatar: string) {
 		return fetch(`${this._url}/users/me/avatar`, {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify({avatar}),
 		})
-			.then(this._checkResponse)
 	}
 
 	// Отправляет карточку на сервер
-	postCard({ name, link }: ChangedCard): Promise<ICard> {
+	postCard({ name, link }: ChangedCardType) {
 		return fetch(`${this._url}/cards`, {
 			method: 'POST',
 			headers: this._headers,
@@ -62,25 +59,22 @@ class Api {
 				link,
 			})
 		})
-			.then(this._checkResponse)
 	}
 
 	// Удаляет карточку с сервера
-	deleteCard(cardId: string): Promise<IDeletedCardResponse> {
+	deleteCard(cardId: string) {
 		return fetch(`${this._url}/cards/${cardId}`, {
 			method: 'DELETE',
 			headers: this._headers,
 		})
-			.then(this._checkResponse)
 	}
 
 	// Переключение лайка
-	changeLikeCardStatus(cardId: string, isLiked: boolean): Promise<ICard> {
+	changeLikeCardStatus(cardId: string, isLiked: boolean) {
 		return fetch(`${this._url}/cards/likes/${cardId}`, {
 			method: `${isLiked ? 'PUT' : 'DELETE'}`,
 			headers: this._headers,
 		})
-			.then(this._checkResponse)
 	}
 }
 

@@ -1,3 +1,7 @@
 @import url(./vendor/normalize.css);
 
 @import url(./vendor/inter.css);
+
+* {
+	font-family: 'Inter', Arial, sans-serif;
+}

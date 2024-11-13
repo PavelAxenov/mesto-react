@@ -1,0 +1,19 @@
+.imgContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.image {
+	width: 100%;
+	max-width: 75vw;
+	max-height: 75vh;
+}
+
+.imageText {
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 400;
+	color: #ffffff;
+}

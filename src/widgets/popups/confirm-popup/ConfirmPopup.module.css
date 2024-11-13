@@ -1,0 +1,20 @@
+.confirmContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.title {
+	color: #000;
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+	margin: 0;
+}
+
+.btnWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}

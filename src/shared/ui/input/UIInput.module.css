@@ -1,0 +1,28 @@
+.ui-input {
+	width: 100%;
+	min-width: 350px;
+	margin: 0 auto;
+	border: 0;
+	border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+	font-size: 16px;
+	line-height: 20px;
+	padding: 0 0 10px 0;
+	position: relative;
+}
+
+.ui-input::-webkit-input-placeholder {
+	color: #000;
+}
+.ui-input::-moz-placeholder {
+	color: #000;
+}
+.ui-input::-ms-input-placeholder {
+	color: #c000;
+}
+
+@media screen and (max-width: 550px) {
+	.ui-input {
+		width: calc(75vw - 2 * 15px);
+		min-width: 100px;
+	}
+}

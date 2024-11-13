@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fontsegular.woff2?v=3.19") format("woff2"),
+       url("fontsegular.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fontsedium.woff2?v=3.19") format("woff2"),
+       url("fontsedium.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("fontslack.woff2?v=3.19") format("woff2"),
+       url("fontslack.woff?v=3.19") format("woff");
+}

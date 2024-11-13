@@ -1,6 +1,6 @@
-@import url(./vendor/normalize.css);
+@import url(shared/ui/styles/normalize.css);
 
-@import url(./vendor/inter.css);
+@import url(shared/ui/styles/inter.css);
 
 * {
 	font-family: 'Inter', Arial, sans-serif;

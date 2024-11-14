@@ -1,6 +1,6 @@
-import {ICard} from "../../../shared/api/types";
 import styles from "./ImagePopup.module.css";
 import {memo} from "react";
+import {ICard} from "../../../entities/places";
 
 interface IProps {
 	card: ICard,

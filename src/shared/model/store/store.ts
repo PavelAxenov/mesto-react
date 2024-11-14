@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userReducer from "./reducers/UserSlice";
-import cardsSlice from "./reducers/CardsSlice";
+import userReducer from "../../../entities/profile/model/slice/UserSlice";
+import cardsSlice from "../../../entities/places/model/slice/CardsSlice";
 
 export const store = configureStore({
 	reducer: {

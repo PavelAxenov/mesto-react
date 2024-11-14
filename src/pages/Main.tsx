@@ -1,5 +1,5 @@
-import Profile from "../entities/profile/Profile";
-import Places from "../entities/places/Places";
+import {Profile} from "../entities/profile";
+import {Places} from "../entities/places";
 
 const Main = () => {
 	return (

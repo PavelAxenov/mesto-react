@@ -1,8 +1,8 @@
 import PopupWithForm from "../form-popup/PopupWithForm";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { ChangedCardType } from "../../../shared/api/types";
 import {InputType} from "../../../shared/ui/input/types";
 import UiInput from "../../../shared/ui/input/UIInput";
+import {ChangedCardType} from "../../../entities/places";
 
 interface IProps {
 	onAddPlace: (card: ChangedCardType) => void

@@ -1,7 +1,7 @@
 import PopupWithForm from "../form-popup/PopupWithForm";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { ChangedUserInfoType } from "../../../shared/api/types";
 import UiInput from "../../../shared/ui/input/UIInput";
+import {ChangedUserInfoType} from "../../../entities/profile/model/types/profile";
 
 interface IProps {
 	userName: string,

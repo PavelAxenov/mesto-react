@@ -36,7 +36,7 @@
 * Typescript
 * API;
 * FSD;
-* Webpack;
+* Webpack + Vite;
 
 ## Инструкция по запуску приложения
 * Клонировать проект https://github.com/PavelAxenov/mesto-react.git;

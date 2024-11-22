@@ -3,6 +3,11 @@
 	padding: 40px 0;
 }
 
+.img {
+	width: 142px;
+	height: 33px;
+}
+
 @media screen and (max-width: 880px) {
 	.header {
 		padding: 28px 0 28px 20px;

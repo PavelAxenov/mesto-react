@@ -1,0 +1,5 @@
+export {AddPlacePopup} from './ui/add-place/AddPlacePopup'
+export {ConfirmPopup} from './ui/confirm-popup/ConfirmPopup'
+export {ImagePopup} from './ui/img-popup/ImagePopup'
+export {EditAvatarPopup} from './ui/edit-avatar/EditAvatarPopup'
+export {EditProfilePopup} from './ui/edit-profile/EditProfilePopup'

@@ -1,4 +1,4 @@
-import {IUserInfo} from "../../../profile";
+import {IUserInfo} from "../../../user";
 
 export interface IDeletedCardResponse {
 	message: string;

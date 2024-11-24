@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ICard} from "../types/places";
-import {updateLikeStatus} from "../../api/places-api/updateLikeStatus";
+import {updateLikeStatus} from "../../api/updateLikeStatus";
 
 // смена лайка карточки
 export const changeLikeCardStatus = createAsyncThunk(

@@ -29,14 +29,14 @@
 * При клике на картинку показывается полноразмерное изображение.
 
 ## Стек
-* CSS Modules;
 * React;
-* React Portal
+* Typescript;
+* React Portal;
 * Redux Toolkit;
-* Typescript
+* CSS Modules;
 * API;
 * FSD;
-* Webpack + Vite;
+* Vite;
 
 ## Инструкция по запуску приложения
 * Клонировать проект https://github.com/PavelAxenov/mesto-react.git;

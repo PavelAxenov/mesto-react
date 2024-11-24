@@ -1,5 +1,4 @@
-export { IDeletedCardResponse, ICard } from './model/types/places'
-export type { ChangedCardType } from './model/types/places'
+export type { ChangedCardType, IDeletedCardResponse, ICard } from './model/types/places'
 
 export {
 	setCardsByDelete,
@@ -14,6 +13,12 @@ export { deleteCard } from './model/services/deleteCard'
 export { addCard } from './model/services/addCard'
 export { changeLikeCardStatus } from './model/services/changeLikeCardStatus'
 
-export { Places } from './ui/places/Places'
-export { CardSkeleton } from './ui/skeleton/CardSkeleton'
-export { PlaceCard } from './ui/place-card/PlaceCard'
+export {
+	selectCardsStore,
+	selectPlaces,
+	selectPlacesLoadingStatus,
+	selectChangePlaceStatus,
+	selectLikedCard,
+	selectDeletedCard,
+	selectAddedCard,
+} from './model/selectors/selectors'

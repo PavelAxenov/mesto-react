@@ -1,6 +1,6 @@
 import {ICard} from "../types/places";
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {getPlaces} from "../../api/places-api/getPlaces";
+import {getPlaces} from "../../api/getPlaces";
 
 // получение всех карточек
 export const fetchCards = createAsyncThunk(

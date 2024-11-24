@@ -1,7 +1,7 @@
 
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ICard, IDeletedCardResponse} from "../types/places";
-import {deletePlace} from "../../api/places-api/daletePlace";
+import {deletePlace} from "../../api/daletePlace";
 
 // Удаление карточки
 export const deleteCard = createAsyncThunk(

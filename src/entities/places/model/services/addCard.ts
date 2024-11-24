@@ -1,7 +1,7 @@
 
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ChangedCardType, ICard} from "../types/places";
-import {addPlaces} from "../../api/places-api/addPlace";
+import {addPlaces} from "../../api/addPlace";
 
 // добавляем карточку
 export const addCard = createAsyncThunk(
@@ -10,6 +10,7 @@ export const addCard = createAsyncThunk(
 		try {
 			const res = await addPlaces(data);
 
+			debugger
 			if (res.ok) {
 				return res.json()
 			}

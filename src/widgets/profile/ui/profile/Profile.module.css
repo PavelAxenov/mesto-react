@@ -1,0 +1,136 @@
+.profile {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 40px;
+}
+
+.profileContainer {
+	display: flex;
+	gap: 30px;
+}
+
+.avatarContainer {
+	position: relative;
+}
+
+.avatar {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.avatarEditBtn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 120px;
+	height: 120px;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0);
+	cursor: pointer;
+}
+
+.avatarEditBtn:hover {
+	background: rgba(0, 0, 0, 0.8);
+	background-image: url(edit.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 26px;
+	transition: background-color 0.3s ease;
+}
+
+.profileInfo {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	gap: 8px 24px;
+}
+
+.profileName {
+	max-width: 500px;
+	margin: 0;
+	padding: 0;
+	font-weight: 500;
+	font-size: 42px;
+	line-height: 48px;
+	align-self: flex-end;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.profileEditBtn {
+	padding: 4px;
+	margin: 0 0 10px;
+	border: 1px solid #fff;
+	background-color: rgba(0, 0, 0, 0);
+	align-self: flex-end;
+}
+
+.profileEditBtn:hover {
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.profileDescription {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	line-height: 22px;
+	max-width: 500px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.addBtn {
+	padding: 0;
+	margin: 0;
+	width: 150px;
+	height: 50px;
+	border: 2px solid #fff;
+	border-radius: 2px;
+	background-color: rgba(0, 0, 0, 0);
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+}
+
+.addBtn:hover {
+	opacity: .6;
+}
+
+@media screen and (max-width: 880px) {
+	.profile {
+		flex-direction: column;
+		gap: 30px;
+		padding: 30px 20px 0;
+	}
+
+	.profileDescription {
+		font-size: 14px;
+		line-height: 17px;
+	}
+
+	.addBtn {
+		width: 250px;
+		background-size: 16px;
+	}
+
+	.profileEditBtn {
+		margin: 0 0 6px;
+	}
+
+	.profileName {
+		font-size: 24px;
+		line-height: 30px;
+		padding-right: 0;
+		text-align: center;
+	}
+
+	.avatar {
+		align-self: center;
+	}
+}

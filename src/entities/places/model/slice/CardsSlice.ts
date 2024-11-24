@@ -4,7 +4,7 @@ import { fetchCards } from "../services/fetchCards";
 import { deleteCard } from "../services/deleteCard";
 import { changeLikeCardStatus } from "../services/changeLikeCardStatus";
 import { addCard } from "../services/addCard";
-import {CARDS_SLICE_NAME, ICardsSchema, RequestStatus} from "../../../../shared";
+import {CARDS_SLICE_NAME, ICardsSchema, RequestStatus} from "../../../../shared/model";
 
 const initialState: ICardsSchema = {
 	places: [],
@@ -41,6 +41,7 @@ export const cardsSlice = createSlice({
 				state.addedCard = null;
 			}
 			state.places = [action.payload, ...state.places];
+			debugger
 		}
 	},
 	extraReducers: (builder) => {
@@ -96,6 +97,7 @@ export const cardsSlice = createSlice({
 			.addCase(addCard.fulfilled.type, (state: ICardsSchema, action: PayloadAction<ICard>) => {
 				state.changePlaceStatus = RequestStatus.Resolved;
 				state.addedCard = action.payload;
+				debugger
 			})
 			.addCase(addCard.rejected.type, (state: ICardsSchema, action: PayloadAction<unknown>) => {
 				state.changePlaceStatus = RequestStatus.Rejected;

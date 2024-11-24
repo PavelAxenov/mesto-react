@@ -1,23 +1,18 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {fetchUser} from "../services/fetch-user/fetchUser";
-import {changeUserInfo} from "../services/change-user-info/changeUserInfo";
-import {changeUserAvatar} from "../services/change-user-avatar/changeUserAvatar";
-import {IUserInfo} from "../types/profile";
+import { fetchUser } from "../services/fetch-user/fetchUser";
+import { changeUserInfo } from "../services/change-user-info/changeUserInfo";
+import { changeUserAvatar } from "../services/change-user-avatar/changeUserAvatar";
+import { IUserInfo } from "../types/profile";
+import {IUserSchema, RequestStatus, USER_SLICE_NAME} from "../../../../shared";
 
-interface IUserState {
-	userInfo: IUserInfo | null,
-	userLoadingStatus: 'loading' | 'resolved' | 'rejected' | null;
-	error: string | null;
-}
-
-const initialState: IUserState = {
+const initialState: IUserSchema = {
 	userInfo: null,
-	userLoadingStatus: 'loading',
+	userLoadingStatus: RequestStatus.Loading,
 	error: null
 };
 
 export const userSlice = createSlice({
-	name: 'user',
+	name: USER_SLICE_NAME,
 	initialState,
 	reducers: {
 		setUserInfo: (state, action: PayloadAction<IUserInfo>) => {
@@ -27,45 +22,45 @@ export const userSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			// получение данных пользователя
-			.addCase(fetchUser.pending.type, (state: IUserState) => {
-				state.userLoadingStatus = 'loading';
+			.addCase(fetchUser.pending.type, (state: IUserSchema) => {
+				state.userLoadingStatus = RequestStatus.Loading;
 				state.error = null;
 			})
-			.addCase(fetchUser.fulfilled.type, (state: IUserState, action: PayloadAction<IUserInfo>) => {
-				state.userLoadingStatus = 'resolved';
+			.addCase(fetchUser.fulfilled.type, (state: IUserSchema, action: PayloadAction<IUserInfo>) => {
+				state.userLoadingStatus = RequestStatus.Resolved;
 				state.userInfo = action.payload;
 			})
-			.addCase(fetchUser.rejected.type, (state: IUserState, action: PayloadAction<string>) => {
-				state.userLoadingStatus = 'rejected';
+			.addCase(fetchUser.rejected.type, (state: IUserSchema, action: PayloadAction<string>) => {
+				state.userLoadingStatus = RequestStatus.Rejected;
 				state.error = action.payload;
 			})
 
 			// изменение данных пользователя
-			.addCase(changeUserInfo.pending.type, (state: IUserState) => {
-				state.userLoadingStatus = 'loading';
+			.addCase(changeUserInfo.pending.type, (state: IUserSchema) => {
+				state.userLoadingStatus = RequestStatus.Loading;
 				state.error = null;
 			})
-			.addCase(changeUserInfo.fulfilled.type, (state: IUserState, action: PayloadAction<IUserInfo>) => {
-				state.userLoadingStatus = 'resolved';
+			.addCase(changeUserInfo.fulfilled.type, (state: IUserSchema, action: PayloadAction<IUserInfo>) => {
+				state.userLoadingStatus = RequestStatus.Resolved;
 				state.userInfo = action.payload;
 			})
-			.addCase(changeUserInfo.rejected.type, (state: IUserState, action: PayloadAction<string>) => {
-				state.userLoadingStatus = 'rejected';
+			.addCase(changeUserInfo.rejected.type, (state: IUserSchema, action: PayloadAction<string>) => {
+				state.userLoadingStatus = RequestStatus.Rejected;
 				console.log('reh')
 				state.error = action.payload;
 			})
 
 			// изменение аватара пользователя
-			.addCase(changeUserAvatar.pending.type, (state: IUserState) => {
-				state.userLoadingStatus = 'loading';
+			.addCase(changeUserAvatar.pending.type, (state: IUserSchema) => {
+				state.userLoadingStatus = RequestStatus.Loading;
 				state.error = null;
 			})
-			.addCase(changeUserAvatar.fulfilled.type, (state: IUserState, action: PayloadAction<IUserInfo>) => {
-				state.userLoadingStatus = 'resolved';
+			.addCase(changeUserAvatar.fulfilled.type, (state: IUserSchema, action: PayloadAction<IUserInfo>) => {
+				state.userLoadingStatus = RequestStatus.Resolved;
 				state.userInfo = action.payload;
 			})
-			.addCase(changeUserAvatar.rejected.type, (state: IUserState, action: PayloadAction<string>) => {
-				state.userLoadingStatus = 'rejected';
+			.addCase(changeUserAvatar.rejected.type, (state: IUserSchema, action: PayloadAction<string>) => {
+				state.userLoadingStatus = RequestStatus.Rejected;
 				state.error = action.payload;
 			});
 	}

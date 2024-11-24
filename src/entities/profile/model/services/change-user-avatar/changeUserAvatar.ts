@@ -3,7 +3,7 @@ import {updateUserAvatar} from "../../../api/profile-api/updateUserAvatar";
 import {IUserInfo} from "../../types/profile";
 
 export const changeUserAvatar = createAsyncThunk(
-	'user/updateUserAvatar.ts',
+	'user/updateUserAvatar',
 	async (avatar: string): Promise<IUserInfo> => {
 		try {
 			const res = await updateUserAvatar(avatar);

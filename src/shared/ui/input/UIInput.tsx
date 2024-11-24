@@ -1,4 +1,4 @@
-import React, {ChangeEvent, memo} from 'react';
+import { ChangeEvent, memo } from 'react';
 import styles from './UIInput.module.css'
 import {InputType} from "./types";
 
@@ -13,8 +13,16 @@ interface IProps {
 	required?: boolean
 }
 
-const UiInput = (props: IProps) => {
-	const { placeholder = '', value, type = InputType.Text, minLength = 2, maxLength = Infinity, handleValueChange, required = true } = props;
+export const UIInput = memo((props: IProps) => {
+	const {
+		placeholder = '',
+		value,
+		type = InputType.Text,
+		minLength = 2,
+		maxLength = Infinity,
+		required = true,
+		handleValueChange,
+	} = props;
 
 	const inputClass = `${styles['ui-input']}`
 
@@ -31,6 +39,4 @@ const UiInput = (props: IProps) => {
 			required={required}
 		/>
 	);
-};
-
-export default memo(UiInput);
+});

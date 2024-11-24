@@ -1,27 +1,30 @@
 import styles from "./Profile.module.css"
-import {useEffect, useState} from "react";
-import {useAppDispatch, useAppSelector} from "../../../../shared/lib/hooks/redux";
-import {createPortal} from "react-dom";
-import Modal from "../../../../shared/ui/modal/Modal";
+
+import { useEffect, useState } from "react";
+import { createPortal} from "react-dom";
+
+import { changeUserAvatar } from "../../model/services/change-user-avatar/changeUserAvatar";
+import { fetchUser } from "../../model/services/fetch-user/fetchUser";
+import { ChangedUserInfoType } from "../../model/types/profile";
+import { changeUserInfo } from "../../model/services/change-user-info/changeUserInfo";
+import { addCard, ChangedCardType, setAddedCard } from "../../../places";
+
+import { ProfileSkeleton } from "../skeleton/ProfileSkeleton";
+import { IconName, IconSize, Modal, UIIcon, useAppDispatch, useAppSelector } from "../../../../shared";
 import EditAvatarPopup from "../../../../widgets/popups/edit-avatar/EditAvatarPopup";
 import EditProfilePopup from "../../../../widgets/popups/edit-profile/EditProfilePopup";
 import AddPlacePopup from "../../../../widgets/popups/add-place/AddPlacePopup";
-import UIIcon from "../../../../shared/ui/icon/UIIcon";
-import {IconName, IconSize} from "../../../../shared/ui/icon/types";
-import {changeUserAvatar} from "../../model/services/change-user-avatar/changeUserAvatar";
-import {fetchUser} from "../../model/services/fetch-user/fetchUser";
-import {ChangedUserInfoType} from "../../model/types/profile";
-import {changeUserInfo} from "../../model/services/change-user-info/changeUserInfo";
-import {addCard, ChangedCardType, setAddedCard} from "../../../places";
-import {ProfileSkeleton} from "../skeleton/ProfileSkeleton";
+import {getStoreAddedCard, getStoreUserInfo, getStoreUserLoadingStatus} from "../../model/selectors/selectors";
 
 export const Profile = () => {
 	const [isEditAvatarPopupOpen, setAvatarPopup] = useState<boolean>(false);
 	const [isEditProfilePopupOpen, setProfilePopup] = useState<boolean>(false);
 	const [isAddPlacePopupOpen, setNewPlacePopup] = useState<boolean>(false);
 
-	const { userInfo, userLoadingStatus } = useAppSelector((store) => store.user);
-	const { addedCard } = useAppSelector(state => state.cards)
+	const userInfo = useAppSelector(getStoreUserInfo);
+	const userLoadingStatus = useAppSelector(getStoreUserLoadingStatus);
+
+	const addedCard = useAppSelector(getStoreAddedCard)
 
 	const dispatch = useAppDispatch()
 

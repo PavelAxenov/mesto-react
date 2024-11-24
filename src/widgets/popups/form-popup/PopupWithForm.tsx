@@ -1,7 +1,6 @@
 import {FormEvent, ReactNode} from "react";
 import styles from './PopupWithForm.module.css'
-import UiButton from "../../../shared/ui/button/UIButton";
-import {ButtonSize, ButtonType} from "../../../shared/ui/button/types";
+import {ButtonSize, ButtonType, UIButton} from "../../../shared";
 
 interface IProps {
 	name: string,
@@ -23,7 +22,7 @@ export default function PopupWithForm(props: IProps) {
 			>
 				{props.children}
 
-				<UiButton
+				<UIButton
 					text={props.buttonText}
 					size={ButtonSize.Md}
 					type={ButtonType.Submit}

@@ -1,8 +1,7 @@
 import PopupWithForm from "../form-popup/PopupWithForm";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import {InputType} from "../../../shared/ui/input/types";
-import UiInput from "../../../shared/ui/input/UIInput";
 import {ChangedCardType} from "../../../entities/places";
+import {InputType, UIInput} from "../../../shared";
 
 interface IProps {
 	onAddPlace: (card: ChangedCardType) => void
@@ -46,14 +45,14 @@ export default function AddPlacePopup(props: IProps) {
 			onSubmit={handleSubmit}
 		>
 
-			<UiInput
+			<UIInput
 				value={name}
 				placeholder="Название"
 				maxLength={30}
 				handleValueChange={handleNameChange}
 			/>
 
-			<UiInput
+			<UIInput
 				type={InputType.Url}
 				value={link}
 				placeholder="Ссылка на картинку"

@@ -8,13 +8,14 @@ import HeartIcon from './icons/heart.svg?react';
 import HeartSolidIcon from './icons/heart-solid.svg?react';
 import LogoIcon from './icons/logo.svg?react';
 import TrashIcon from './icons/trash.svg?react';
+import {memo} from "react";
 
 interface IProps {
 	size?: IconSize;
 	iconName: IconName
 }
 
-const UiIcon = (props: IProps) => {
+export const UIIcon = memo((props: IProps) => {
 	const {size = IconSize.Md, iconName} = props;
 
 	const iconClass = `${styles['ui-icon']} ${styles[`ui-icon-${size}`]}`
@@ -35,6 +36,4 @@ const UiIcon = (props: IProps) => {
 		case IconName.Trash:
 			return <TrashIcon className={iconClass} />;
 	}
-};
-
-export default UiIcon;
+});

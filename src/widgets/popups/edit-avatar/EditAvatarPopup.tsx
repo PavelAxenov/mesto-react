@@ -1,7 +1,6 @@
 import PopupWithForm from "../form-popup/PopupWithForm";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import UiInput from "../../../shared/ui/input/UIInput";
-import {InputType} from "../../../shared/ui/input/types";
+import {UIInput, InputType} from "../../../shared";
 
 interface IProps {
 	onUpdateAvatar: (avatar: string) => void,
@@ -31,7 +30,7 @@ const EditAvatarPopup = (props: IProps) => {
 			buttonText="Сохранить"
 			onSubmit={handleSubmit}
 		>
-			<UiInput
+			<UIInput
 				type={InputType.Url}
 				value={avatar}
 				placeholder="Ссылка на аватар"

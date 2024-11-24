@@ -1,15 +1,11 @@
 import React, {useState} from "react";
-import styles from "./PlacesCard.module.css"
-import {createPortal} from "react-dom";
-import Modal from "../../../shared/ui/modal/Modal";
-import {ModalType} from "../../../shared/ui/modal/type";
-import {useAppSelector} from "../../../shared/lib/hooks/redux";
-import ImagePopup from "../../../widgets/popups/img-popup/ImagePopup";
-import ConfirmPopup from "../../../widgets/popups/confirm-popup/ConfirmPopup";
-import UIIcon from "../../../shared/ui/icon/UIIcon";
-import {IconName, IconSize} from "../../../shared/ui/icon/types";
-import {IUserInfo} from "../../profile";
-import {ICard} from "../../places";
+import styles from "./PlaceCard.module.css"
+import { createPortal } from "react-dom";
+import ImagePopup from "../../../../widgets/popups/img-popup/ImagePopup";
+import ConfirmPopup from "../../../../widgets/popups/confirm-popup/ConfirmPopup";
+import {getStoreUserInfo, IUserInfo} from "../../../profile";
+import { ICard } from "../../index";
+import { IconName, IconSize, Modal, ModalType, UIIcon, useAppSelector } from "../../../../shared";
 
 interface IProps {
 	card: ICard,
@@ -18,7 +14,7 @@ interface IProps {
 }
 
 export const PlaceCard = (props: IProps) => {
-	const currentUser = useAppSelector(state => state.user.userInfo)
+	const currentUser = useAppSelector(getStoreUserInfo)
 
 	// Определяем, являемся ли мы владельцем текущей карточки
 	const isOwn: boolean = props.card.owner._id === currentUser._id;

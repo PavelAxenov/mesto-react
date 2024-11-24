@@ -1,7 +1,7 @@
 import PopupWithForm from "../form-popup/PopupWithForm";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import UiInput from "../../../shared/ui/input/UIInput";
-import {ChangedUserInfoType} from "../../../entities/profile/model/types/profile";
+import {ChangedUserInfoType} from "../../../entities/profile";
+import {UIInput} from "../../../shared";
 
 interface IProps {
 	userName: string,
@@ -42,13 +42,13 @@ export default function EditProfilePopup(props: IProps) {
 			buttonText="Сохранить"
 			onSubmit={handleSubmit}
 		>
-			<UiInput
+			<UIInput
 				value={name}
 				placeholder="Имя"
 				handleValueChange={handleNameChange}
 				maxLength={400}
 			/>
-			<UiInput
+			<UIInput
 				value={description}
 				placeholder="Профессия"
 				handleValueChange={handleDescriptionChange}

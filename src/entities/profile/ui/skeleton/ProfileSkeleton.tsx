@@ -1,4 +1,5 @@
 import styles from './ProfileSkeleton.module.css'
+
 export const ProfileSkeleton = () => {
 	return (
 		<div className={styles.skeletonContainer}>

@@ -10,7 +10,7 @@ interface IProps {
 	onClick?: () => void;
 }
 
-const UiButton = (props: IProps) => {
+export const UIButton = memo((props: IProps) => {
 	const { text, size = ButtonSize.Md, variant = ButtonVariant.Default, type = ButtonType.Default } = props;
 
 	const btnClass = `${styles['ui-button']} ${styles[`ui-button-${size}`]} ${styles[`ui-button-${variant}`]}`
@@ -24,6 +24,4 @@ const UiButton = (props: IProps) => {
 			{text}
 		</button>
 	);
-};
-
-export default memo(UiButton);
+});

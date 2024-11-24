@@ -1,6 +1,5 @@
 import styles from "./ConfirmPopup.module.css";
-import {ButtonSize} from "../../../shared/ui/button/types";
-import UiButton from "../../../shared/ui/button/UIButton";
+import {ButtonSize, UIButton} from "../../../shared";
 
 
 interface IProps {
@@ -16,12 +15,12 @@ const ConfirmPopup = (props: IProps) => {
 			</h3>
 
 			<div className={styles.btnWrapper}>
-				<UiButton
+				<UIButton
 					text="Удалить"
 					size={ButtonSize.Sm}
 					onClick={props.onConfirm}
 				/>
-				<UiButton
+				<UIButton
 					text="Отмена"
 					size={ButtonSize.Sm}
 					onClick={props.onCancel}

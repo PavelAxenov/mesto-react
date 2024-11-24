@@ -6,13 +6,13 @@ import {
 	setDeletedCard,
 	setLikedCard
 } from "../../model/slice/CardsSlice";
-import {useAppDispatch, useAppSelector} from "../../../../shared/lib/hooks/redux";
 import {fetchCards} from "../../model/services/fetchCards";
 import {ICard} from "../../model/types/places";
 import {deleteCard} from "../../model/services/deleteCard";
 import {changeLikeCardStatus} from "../../model/services/changeLikeCardStatus";
 import {CardSkeleton} from "../skeleton/CardSkeleton";
-import {PlaceCard} from "../../../places-card";
+import {useAppDispatch, useAppSelector} from "../../../../shared";
+import {PlaceCard} from "../place-card/PlaceCard";
 
 export const Places = () => {
 	const dispatch = useAppDispatch()

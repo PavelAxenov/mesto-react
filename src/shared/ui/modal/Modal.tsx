@@ -1,8 +1,8 @@
 import styles from "./Modal.module.css";
-import {ReactNode} from "react";
+import {memo, ReactNode} from "react";
 import {ModalType} from "./type";
-import UIIcon from "../icon/UIIcon";
 import {IconName} from "../icon/types";
+import {UIIcon} from "../icon/UIIcon";
 
 interface IProps {
 	type?: ModalType;
@@ -16,7 +16,7 @@ const defaultProps: IProps = {
 	onClose: () => {}
 }
 
-const Modal = (props: IProps = defaultProps) => {
+export const Modal = memo((props: IProps = defaultProps) => {
 	const modalClasses: string = `${props.type === ModalType.Image ? styles.modalImage : styles.modal}`
 
 	return (
@@ -29,6 +29,4 @@ const Modal = (props: IProps = defaultProps) => {
 			</div>
 		</div>
 	)
-}
-
-export default Modal;
+})

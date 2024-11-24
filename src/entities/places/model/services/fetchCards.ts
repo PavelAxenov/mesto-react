@@ -1,10 +1,11 @@
 import {ICard} from "../types/places";
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {getPlaces} from "../../api/getPlaces";
+import {CARDS_SLICE_NAME} from "../../../../shared/model";
 
 // получение всех карточек
 export const fetchCards = createAsyncThunk(
-	'places/fetchCards',
+	`${CARDS_SLICE_NAME}/fetchCards`,
 	async (): Promise<ICard[]> => {
 		try {
 			const res = await getPlaces();

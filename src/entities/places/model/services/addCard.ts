@@ -1,11 +1,11 @@
-
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ChangedCardType, ICard} from "../types/places";
 import {addPlaces} from "../../api/addPlace";
+import {CARDS_SLICE_NAME} from "../../../../shared/model";
 
 // добавляем карточку
 export const addCard = createAsyncThunk(
-	'places/addCard',
+	`${CARDS_SLICE_NAME}/addCard`,
 	async (data: ChangedCardType): Promise<ICard | null> => {
 		try {
 			const res = await addPlaces(data);

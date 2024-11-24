@@ -1,9 +1,10 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {getUserInfo} from "../../../api/fetchUser";
 import {IUserInfo} from "../../types/user";
+import {USER_SLICE_NAME} from "../../../../../shared/model";
 
 export const fetchUser = createAsyncThunk(
-	'user/fetchUser',
+	`${USER_SLICE_NAME}/fetchUser`,
 	async (): Promise<IUserInfo> => {
 		try {
 			const res = await getUserInfo();

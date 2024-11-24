@@ -1,9 +1,10 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {updateUserAvatar} from "../../../api/updateUserAvatar";
 import {IUserInfo} from "../../types/user";
+import {USER_SLICE_NAME} from "../../../../../shared/model";
 
 export const changeUserAvatar = createAsyncThunk(
-	'user/updateUserAvatar',
+	`${USER_SLICE_NAME}/updateUserAvatar`,
 	async (avatar: string): Promise<IUserInfo> => {
 		try {
 			const res = await updateUserAvatar(avatar);

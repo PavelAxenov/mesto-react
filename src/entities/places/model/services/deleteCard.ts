@@ -1,11 +1,11 @@
-
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ICard, IDeletedCardResponse} from "../types/places";
 import {deletePlace} from "../../api/daletePlace";
+import {CARDS_SLICE_NAME} from "../../../../shared/model";
 
 // Удаление карточки
 export const deleteCard = createAsyncThunk(
-	'places/deleteCard',
+	`${CARDS_SLICE_NAME}/deleteCard`,
 	async (card: ICard): Promise<IDeletedCardResponse | null> => {
 		try {
 			const res = await deletePlace(card._id);

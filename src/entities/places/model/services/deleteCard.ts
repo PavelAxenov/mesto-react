@@ -1,14 +1,14 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ICard, IDeletedCardResponse} from "../types/places";
-import {deletePlace} from "../../api/daletePlace";
 import {CARDS_SLICE_NAME} from "../../../../shared/model";
+import {ApiClient} from "../../../../shared/api";
 
 // Удаление карточки
 export const deleteCard = createAsyncThunk(
 	`${CARDS_SLICE_NAME}/deleteCard`,
 	async (card: ICard): Promise<IDeletedCardResponse | null> => {
 		try {
-			const res = await deletePlace(card._id);
+			const res = await ApiClient.prototype.delete(`cards/${card._id}`);
 
 			if (res.ok) {
 				return {
@@ -17,10 +17,8 @@ export const deleteCard = createAsyncThunk(
 				}
 			}
 
-			console.log(res);
 			return null;
 		} catch (e: unknown) {
-			console.log("Не удаляется карточка", e);
-			throw new Error(e as string);
+			throw new Error(`Ошибка удаления карточки: ${e}`);
 		}
 	})

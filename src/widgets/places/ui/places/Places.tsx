@@ -2,9 +2,8 @@ import styles from "./Places.module.css";
 import { useEffect, useState } from "react";
 import { CardSkeleton } from "../skeleton/CardSkeleton";
 import { createPortal } from "react-dom";
-import ConfirmPopup from "../../../../features/popups/ui/confirm-popup/ConfirmPopup";
 import { Modal, ModalType } from "../../../../entities/modal";
-import { ImagePopup } from "../../../../features/popups";
+import { ConfirmPopup, ImagePopup } from "../../../../features/popups";
 import { useAppDispatch, useAppSelector } from "../../../../shared/lib";
 import {
 	changeLikeCardStatus,
@@ -20,8 +19,8 @@ import {
 	setDeletedCard,
 	setLikedCard
 } from "../../../../entities/places";
-import {PlaceCard} from "../../../../features/place-card";
-import {selectUserInfo} from "../../../../entities/user";
+import { PlaceCard } from "../../../../features/place-card";
+import { selectUserInfo } from "../../../../entities/user";
 
 export const Places = () => {
 	const dispatch = useAppDispatch()

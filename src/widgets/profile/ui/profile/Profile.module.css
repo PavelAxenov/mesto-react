@@ -34,10 +34,7 @@
 }
 
 .avatarEditBtn:hover {
-	background: rgba(0, 0, 0, 0.8);
-	background-image: url(edit.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+	background: rgba(0, 0, 0, 0.8) url(../../../../shared/ui/icon/icons/edit.svg) no-repeat center;
 	background-size: 26px;
 	transition: background-color 0.3s ease;
 }

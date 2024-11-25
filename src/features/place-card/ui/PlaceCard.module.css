@@ -53,6 +53,10 @@
 	gap: 4px;
 }
 
+.likeBtn {
+	background: transparent;
+}
+
 .likeBtn:hover {
 	cursor: pointer;
 	opacity: .5;

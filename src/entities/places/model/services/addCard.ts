@@ -1,24 +1,22 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ChangedCardType, ICard} from "../types/places";
-import {addPlaces} from "../../api/addPlace";
 import {CARDS_SLICE_NAME} from "../../../../shared/model";
+import {ApiClient} from "../../../../shared/api";
 
 // добавляем карточку
 export const addCard = createAsyncThunk(
 	`${CARDS_SLICE_NAME}/addCard`,
 	async (data: ChangedCardType): Promise<ICard | null> => {
 		try {
-			const res = await addPlaces(data);
+			const res = await ApiClient.prototype.post('cards', data);
 
 			debugger
 			if (res.ok) {
 				return res.json()
 			}
 
-			console.log(res);
 			return null;
 		} catch (e: unknown) {
-			console.log("Ошибка лайка", e);
-			throw new Error(e as string);
+			throw new Error(`Ошибка лайка/дизлайка: ${e}`);
 		}
 	})

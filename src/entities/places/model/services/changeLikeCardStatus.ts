@@ -1,14 +1,20 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ICard} from "../types/places";
-import {updateLikeStatus} from "../../api/updateLikeStatus";
 import {CARDS_SLICE_NAME} from "../../../../shared/model";
+import {ApiClient} from "../../../../shared/api";
 
 // смена лайка карточки
 export const changeLikeCardStatus = createAsyncThunk(
 	`${CARDS_SLICE_NAME}/changeLikeCardStatus`,
 	async (data: {cardId: string, isLiked: boolean}): Promise<ICard | null> => {
 		try {
-			const res = await updateLikeStatus(data.cardId, !data.isLiked);
+			let res;
+
+			if (!data.isLiked) {
+				res = await ApiClient.prototype.put(`cards/likes/${data.cardId}`);
+			} else {
+				res = await ApiClient.prototype.delete(`cards/likes/${data.cardId}`);
+			}
 
 			if (res.ok) {
 				return res.json()

@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { fetchUser } from "../services/fetch-user/fetchUser";
-import { changeUserInfo } from "../services/change-user-info/changeUserInfo";
-import { changeUserAvatar } from "../services/change-user-avatar/changeUserAvatar";
+import { fetchUser } from "../services/fetchUser";
+import { changeUserInfo } from "../services/changeUserInfo";
+import { changeUserAvatar } from "../services/changeUserAvatar";
 import { IUserInfo } from "../types/user";
 import {IUserSchema, RequestStatus, USER_SLICE_NAME} from "../../../../shared/model";
 
@@ -46,7 +46,6 @@ export const userSlice = createSlice({
 			})
 			.addCase(changeUserInfo.rejected.type, (state: IUserSchema, action: PayloadAction<string>) => {
 				state.userLoadingStatus = RequestStatus.Rejected;
-				console.log('reh')
 				state.error = action.payload;
 			})
 

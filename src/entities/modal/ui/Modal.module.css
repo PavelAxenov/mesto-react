@@ -60,4 +60,7 @@
 	.modalImage {
 		max-width: 75vw;
 	}
+	.modal {
+		max-width: 75vw;
+	}
 }

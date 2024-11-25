@@ -1,5 +1,5 @@
-import {IUserInfo} from "../../../widgets/profile";
-import {ICard} from "../../../widgets/places";
+import {IUserInfo} from "../../../entities/user";
+import {ICard} from "../../../entities/places";
 
 export const enum RequestStatus {
 	Loading = 'loading',

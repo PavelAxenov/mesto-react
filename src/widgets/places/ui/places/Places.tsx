@@ -1,5 +1,5 @@
 import styles from "./Places.module.css";
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import { CardSkeleton } from "../skeleton/CardSkeleton";
 import { createPortal } from "react-dom";
 import { Modal, ModalType } from "../../../../entities/modal";

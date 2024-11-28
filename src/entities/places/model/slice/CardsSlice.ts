@@ -41,7 +41,6 @@ export const cardsSlice = createSlice({
 				state.addedCard = null;
 			}
 			state.places = [action.payload, ...state.places];
-			debugger
 		}
 	},
 	extraReducers: (builder) => {
@@ -97,7 +96,6 @@ export const cardsSlice = createSlice({
 			.addCase(addCard.fulfilled.type, (state: ICardsSchema, action: PayloadAction<ICard>) => {
 				state.changePlaceStatus = RequestStatus.Resolved;
 				state.addedCard = action.payload;
-				debugger
 			})
 			.addCase(addCard.rejected.type, (state: ICardsSchema, action: PayloadAction<unknown>) => {
 				state.changePlaceStatus = RequestStatus.Rejected;

@@ -19,8 +19,8 @@
 	margin: 0 auto;
 	padding: 20px 15px;
 
-	min-width: 100px;
 	min-height: 10px;
+	min-width: 300px;
 	max-width: 80vw;
 
 	background-color: #fff;

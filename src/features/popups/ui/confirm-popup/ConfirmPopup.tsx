@@ -1,5 +1,6 @@
 import styles from "./ConfirmPopup.module.css";
 import {ButtonSize, UIButton} from "../../../../shared/ui";
+import {memo} from "react";
 
 
 interface IProps {
@@ -7,7 +8,7 @@ interface IProps {
 	onCancel: () => void
 }
 
-export const ConfirmPopup = (props: IProps) => {
+export const ConfirmPopup = memo((props: IProps) => {
 	return (
 		<div className={styles.confirmContainer}>
 			<h3 className={styles.title}>
@@ -28,6 +29,4 @@ export const ConfirmPopup = (props: IProps) => {
 			</div>
 		</div>
 	);
-};
-
-export default ConfirmPopup;
+})

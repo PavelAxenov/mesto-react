@@ -1,5 +1,5 @@
 import styles from "./Places.module.css";
-import { useEffect, useState } from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import { CardSkeleton } from "../skeleton/CardSkeleton";
 import { createPortal } from "react-dom";
 import { Modal, ModalType } from "../../../../entities/modal";
@@ -61,36 +61,38 @@ export const Places = () => {
 	}, [likedCard])
 
 	// открываем окно подтверждения удаления карточки
-	const handleDeleteClick = (card: ICard) => {
+	const handleDeleteClick = useCallback((card: ICard) => {
 		setShowConfirmModal(true);
 		setDeletingCard(card);
-	}
+	}, [])
 
 	// удаляем карточку
-	const handleDeleteCard = () => {
+	const handleDeleteCard = useCallback(() => {
 		dispatch(deleteCard(deletingCard))
 		closeModals()
-	}
+	}, [dispatch])
 
 	// лайкаем/дизлайкаем карточку
-	const handleCardLike = (cardId: string, isLiked: boolean) => {
+	const handleCardLike = useCallback((cardId: string, isLiked: boolean) => {
 		dispatch(changeLikeCardStatus({cardId, isLiked}))
-	}
+	}, [dispatch])
 
-	const handleImageClick = (card: ICard) => {
+	const handleImageClick = useCallback((card: ICard) => {
 		setSelectedCard(card)
 		setShowImageModal(true)
-	}
+	}, [])
 
-	const closeImageModal = () => {
+	const closeImageModal = useCallback(() => {
 		setSelectedCard(null)
 		closeModals()
-	}
+	}, [])
 
-	const closeModals = () => {
+	const closeModals = useCallback(() => {
 		setShowImageModal(false)
 		setShowConfirmModal(false)
-	}
+	}, [])
+
+
 
 	if (placesLoadingStatus === 'loading' && !currentUser) {
 		return (

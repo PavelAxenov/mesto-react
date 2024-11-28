@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import {ChangeEvent, FormEvent, memo, useCallback, useEffect, useState} from "react";
 import { InputType, UIInput } from "../../../../shared/ui";
 import { PopupWithForm } from "../../../../entities/form-popup";
 import { ChangedCardType } from "../../../../entities/places";
@@ -7,7 +7,8 @@ interface IProps {
 	onAddPlace: (card: ChangedCardType) => void
 }
 
-export const AddPlacePopup = (props: IProps) => {
+export const AddPlacePopup = memo((props: IProps) => {
+	const { onAddPlace } = props
 	const [name, setName] = useState<string>('');
 	const [link, setLink] = useState<string>('');
 
@@ -16,14 +17,14 @@ export const AddPlacePopup = (props: IProps) => {
 		setLink('');
 	}, []);
 
-	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		props.onAddPlace({
+		onAddPlace({
 			name,
 			link,
 		})
-	}
+	}, [onAddPlace, name, link])
 
 	const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const target = event.target;
@@ -60,4 +61,4 @@ export const AddPlacePopup = (props: IProps) => {
 			/>
 		</PopupWithForm>
 	);
-}
+})

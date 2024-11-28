@@ -1,7 +1,7 @@
 import {PopupWithForm} from "../../../../entities/form-popup";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import {ChangedUserInfoType} from "../../../../widgets/profile";
+import {ChangeEvent, FormEvent, memo, useCallback, useEffect, useState} from "react";
 import {UIInput} from "../../../../shared/ui";
+import {ChangedUserInfoType} from "../../../../entities/user";
 
 interface IProps {
 	userName: string,
@@ -9,7 +9,7 @@ interface IProps {
 	onUpdateUser: (data: ChangedUserInfoType) => void
 }
 
-export const EditProfilePopup = (props: IProps) => {
+export const EditProfilePopup = memo((props: IProps) => {
 	const [name, setName] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
 
@@ -18,22 +18,22 @@ export const EditProfilePopup = (props: IProps) => {
 		setDescription(props.userDescription);
 	}, []);
 
-	const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleNameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		setName((e.target as HTMLInputElement).value);
-	}
+	}, [name])
 
-	const handleDescriptionChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleDescriptionChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		setDescription((e.target as HTMLInputElement).value);
-	}
+	}, [description])
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		props.onUpdateUser({
 			name,
 			about: description,
 		});
-	}
+	}, [props.onUpdateUser, name, description])
 
 	return (
 		<PopupWithForm
@@ -56,4 +56,4 @@ export const EditProfilePopup = (props: IProps) => {
 			/>
 		</PopupWithForm>
 	);
-}
+})

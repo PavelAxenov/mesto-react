@@ -10,7 +10,6 @@ export const addCard = createAsyncThunk(
 		try {
 			const res = await ApiClient.prototype.post('cards', data);
 
-			debugger
 			if (res.ok) {
 				return res.json()
 			}

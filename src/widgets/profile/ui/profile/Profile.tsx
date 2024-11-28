@@ -1,6 +1,6 @@
 import styles from "./Profile.module.css"
 
-import { useEffect, useState } from "react";
+import {useCallback, useEffect, useState} from "react";
 import { createPortal} from "react-dom";
 
 import { ProfileSkeleton } from "../skeleton/ProfileSkeleton";
@@ -35,48 +35,47 @@ export const Profile = () => {
 		dispatch(fetchUser())
 	}, [])
 
+	const closeAllPopups = useCallback(() => {
+		setAvatarPopup(false);
+		setProfilePopup(false);
+		setNewPlacePopup(false);
+	}, [])
+
 	// обновление аватара пользователя
-	const handleUpdateAvatar = (avatar: string) => {
+	const handleUpdateAvatar = useCallback((avatar: string) => {
 		dispatch(changeUserAvatar(avatar))
 		closeAllPopups();
-	}
+	}, [dispatch, closeAllPopups])
 
 	// Изменение данных пользователя
-	const handleUpdateUser = (data: ChangedUserInfoType) => {
+	const handleUpdateUser = useCallback((data: ChangedUserInfoType) => {
 		dispatch(changeUserInfo(data))
 		closeAllPopups();
-	}
+	},[dispatch, closeAllPopups])
 
-	const onEditAvatarClick = () => {
+	const onEditAvatarClick = useCallback(() => {
 		setAvatarPopup(true);
-	}
+	}, [])
 
-	const onEditProfileClick = () => {
+	const onEditProfileClick = useCallback(() => {
 		setProfilePopup(true);
-	}
+	}, [])
 
-	const addNewPlaceClick = () => {
+	const addNewPlaceClick = useCallback(() => {
 		setNewPlacePopup(true);
-	}
+	}, [])
 
 	// Добавляет карточку
-	const handleAddPlaceSubmit = (card: ChangedCardType) => {
-		debugger;
+	const handleAddPlaceSubmit = useCallback((card: ChangedCardType) => {
 		dispatch(addCard(card))
 		closeAllPopups();
-	}
+	}, [dispatch, closeAllPopups])
 
 	useEffect(() => {
 		if (addedCard) {
 			dispatch(setAddedCard(addedCard))
 		}
 	}, [addedCard])
-
-	const closeAllPopups = () => {
-		setAvatarPopup(false);
-		setProfilePopup(false);
-		setNewPlacePopup(false);
-	}
 
 	if (userLoadingStatus === 'loading') {
 		return (

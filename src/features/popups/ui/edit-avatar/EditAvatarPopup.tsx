@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import {ChangeEvent, FormEvent, useCallback, useEffect, useState} from "react";
 import {InputType, UIInput} from "../../../../shared/ui";
 import {PopupWithForm} from "../../../../entities/form-popup";
 
@@ -13,15 +13,15 @@ export const EditAvatarPopup = (props: IProps) => {
 		setAvatar('');
 	}, [])
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		props.onUpdateAvatar(avatar);
-	}
+	}, [props.onUpdateAvatar, avatar])
 
-	const handleAvatarLink = (event: ChangeEvent<HTMLInputElement>) => {
+	const handleAvatarLink = useCallback((event: ChangeEvent<HTMLInputElement>) => {
 		setAvatar(event.target.value);
-	}
+	}, [avatar])
 
 	return (
 		<PopupWithForm

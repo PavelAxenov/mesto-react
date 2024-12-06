@@ -1,10 +1,10 @@
-import styles from "./Places.module.css";
+import cls from "./Places.module.css";
 import {useCallback, useEffect, useState} from "react";
 import { CardSkeleton } from "../skeleton/CardSkeleton";
 import { createPortal } from "react-dom";
 import { Modal, ModalType } from "../../../../entities/modal";
 import { ConfirmPopup, ImagePopup } from "../../../../features/popups";
-import { useAppDispatch, useAppSelector } from "../../../../shared/lib";
+import {classNames, useAppDispatch, useAppSelector, usePaginator} from "../../../../shared/lib";
 import {
 	changeLikeCardStatus,
 	deleteCard,
@@ -21,6 +21,7 @@ import {
 } from "../../../../entities/places";
 import { PlaceCard } from "../../../../features/place-card";
 import { selectUserInfo } from "../../../../entities/user";
+import { UIPaginator } from "../../../../shared/ui";
 
 export const Places = () => {
 	const dispatch = useAppDispatch()
@@ -37,6 +38,14 @@ export const Places = () => {
 	const [showConfirmModal, setShowConfirmModal] = useState<boolean>(false);
 	const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
 	const [deletingCard, setDeletingCard] = useState<ICard | null>(null);
+
+	const {
+		currentPage,
+		currentItems: currentPlaces,
+		pageNumbers,
+		changeCurrentPage,
+		handlePageClick
+	} = usePaginator({items: places})
 
 	// получение карточек
 	useEffect(() => {
@@ -92,17 +101,15 @@ export const Places = () => {
 		setShowConfirmModal(false)
 	}, [])
 
-
-
-	if (placesLoadingStatus === 'loading' && !currentUser) {
+	if (placesLoadingStatus === 'loading' || !currentUser) {
 		return (
-			<div className={styles.cards}>
+			<div className={cls.cards}>
 				<CardSkeleton />
 			</div>
 		)
 	}
 
-	if (!places || !places.length) {
+	if (!places.length) {
 		return (
 			<div>
 				Карточек нет
@@ -111,9 +118,9 @@ export const Places = () => {
 	}
 
 	return (
-		<section className={styles.places}>
-			<ul className={styles.cards}>
-				{places.length && places.map((card: ICard) => (
+		<section className={cls.places}>
+			<ul className={cls.cards}>
+				{currentPlaces.length && currentPlaces.map((card: ICard) => (
 					<PlaceCard
 						key={card._id}
 						card={card}
@@ -123,6 +130,15 @@ export const Places = () => {
 					/>)
 				)}
 			</ul>
+
+			<UIPaginator
+				pageNumbers={pageNumbers}
+				currentPage={currentPage}
+				pageClick={handlePageClick}
+				prevPageClick={() => changeCurrentPage('prev')}
+				nextPageClick={() => changeCurrentPage('next')}
+				className={classNames(cls.paginator)}
+			/>
 
 			{showImageModal && createPortal(
 				<Modal type={ModalType.Image} onClose={closeImageModal}>

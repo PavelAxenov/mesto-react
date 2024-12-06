@@ -13,4 +13,6 @@ export const enum IconName {
 	Heart = 'heart',
 	HeartSolid = 'heart-solid',
 	Trash = 'trash',
+	ChevronLeft = 'chevron-left',
+	ChevronRight = 'chevron-right',
 }

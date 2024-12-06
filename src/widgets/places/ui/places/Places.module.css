@@ -12,6 +12,10 @@
 	justify-content: center;
 }
 
+.paginator {
+	margin-top: 20px;
+}
+
 @media screen and (max-width: 920px) {
 	.cards {
 		padding: 0 20px 0;

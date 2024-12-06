@@ -9,3 +9,6 @@ export { IconSize, IconName } from './icon/types'
 
 export { UIInput } from './input/UIInput'
 export { InputType } from './input/types'
+
+export { UIPaginator } from './paginator/UIPaginator'
+export type { PaginatorChangeType } from './paginator/types'

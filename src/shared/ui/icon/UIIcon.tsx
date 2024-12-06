@@ -1,4 +1,5 @@
-import styles from './UIIcon.module.css'
+import {memo} from "react";
+import cls from './UIIcon.module.css'
 import {IconName, IconSize} from "./types";
 
 import AddIcon from './icons/add.svg?react';
@@ -8,17 +9,18 @@ import HeartIcon from './icons/heart.svg?react';
 import HeartSolidIcon from './icons/heart-solid.svg?react';
 import LogoIcon from './icons/logo.svg?react';
 import TrashIcon from './icons/trash.svg?react';
-import {memo} from "react";
+import ChevronRight from './icons/chevron-right.svg?react';
+import ChevronLeft from './icons/chevron-left.svg?react';
 
 interface IProps {
 	size?: IconSize;
-	iconName: IconName
+	iconName: IconName;
 }
 
 export const UIIcon = memo((props: IProps) => {
-	const {size = IconSize.Md, iconName} = props;
+	const { size = IconSize.Md, iconName } = props;
 
-	const iconClass = `${styles['ui-icon']} ${styles[`ui-icon-${size}`]}`
+	const iconClass = `${cls['ui-icon']} ${cls[`ui-icon-${size}`]}`
 
 	switch (iconName) {
 		case IconName.Add:
@@ -35,5 +37,9 @@ export const UIIcon = memo((props: IProps) => {
 			return <LogoIcon className={iconClass} />;
 		case IconName.Trash:
 			return <TrashIcon className={iconClass} />;
+		case IconName.ChevronRight:
+			return <ChevronRight className={iconClass} />;
+		case IconName.ChevronLeft:
+			return <ChevronLeft className={iconClass} />;
 	}
 });

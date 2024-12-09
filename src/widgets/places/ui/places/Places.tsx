@@ -1,14 +1,13 @@
 import cls from "./Places.module.css";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import { CardSkeleton } from "../skeleton/CardSkeleton";
 import { createPortal } from "react-dom";
 import { Modal, ModalType } from "../../../../entities/modal";
 import { ConfirmPopup, ImagePopup } from "../../../../features/popups";
-import {classNames, useAppDispatch, useAppSelector, usePaginator} from "../../../../shared/lib";
+import { classNames, useAppDispatch, useAppSelector } from "../../../../shared/lib";
 import {
 	changeLikeCardStatus,
 	deleteCard,
-	fetchCards,
 	ICard,
 	selectDeletedCard,
 	selectLikedCard,
@@ -39,18 +38,8 @@ export const Places = () => {
 	const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
 	const [deletingCard, setDeletingCard] = useState<ICard | null>(null);
 
-	const {
-		currentPage,
-		currentItems: currentPlaces,
-		pageNumbers,
-		changeCurrentPage,
-		handlePageClick
-	} = usePaginator({items: places})
-
-	// получение карточек
-	useEffect(() => {
-		dispatch(fetchCards())
-	}, [])
+	const [itemsPerPage, setItemsPerPage] = useState(3)
+	const [currentPage, setCurrentPage] = useState(1)
 
 	// меняем массив карточек когда произошло удаление карточки
 	useEffect(() => {
@@ -101,6 +90,34 @@ export const Places = () => {
 		setShowConfirmModal(false)
 	}, [])
 
+	const lastItemsIndex = currentPage * itemsPerPage;
+	const firstItemsIndex = lastItemsIndex - itemsPerPage;
+	// вырезанные из общего массива элементы для отображения
+	const currentPlaces = places.slice(firstItemsIndex, lastItemsIndex)
+
+	// массив со страницами
+	const pageNumbers = useMemo(() => {
+		const res: number[] = [];
+
+		for (let i = 1; i <= Math.ceil(places.length / itemsPerPage); i++) {
+			res.push(i)
+		}
+
+		return res;
+	}, [places.length, itemsPerPage])
+
+	const handlePageClick = (pageNumber: number) => {
+		setCurrentPage(pageNumber)
+	}
+
+	const changeCurrentPage = (type: 'prev' | 'next') => {
+		if (type === 'prev' && currentPage >= 1) {
+			setCurrentPage(currentPage - 1)
+		} else {
+			setCurrentPage(currentPage + 1)
+		}
+	}
+
 	if (placesLoadingStatus === 'loading' || !currentUser) {
 		return (
 			<div className={cls.cards}>
@@ -132,7 +149,8 @@ export const Places = () => {
 			</ul>
 
 			<UIPaginator
-				pageNumbers={pageNumbers}
+				totalPages={pageNumbers.length}
+				perPage={itemsPerPage}
 				currentPage={currentPage}
 				pageClick={handlePageClick}
 				prevPageClick={() => changeCurrentPage('prev')}

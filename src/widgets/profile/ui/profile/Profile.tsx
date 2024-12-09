@@ -12,7 +12,6 @@ import {
 	ChangedUserInfoType,
 	changeUserAvatar,
 	changeUserInfo,
-	fetchUser,
 	selectUserInfo,
 	selectUserLoadingStatus
 } from "../../../../entities/user";
@@ -29,11 +28,6 @@ export const Profile = () => {
 	const addedCard = useAppSelector(selectAddedCard)
 
 	const dispatch = useAppDispatch()
-
-	// получение информации пользователя
-	useEffect(() => {
-		dispatch(fetchUser())
-	}, [])
 
 	const closeAllPopups = useCallback(() => {
 		setAvatarPopup(false);

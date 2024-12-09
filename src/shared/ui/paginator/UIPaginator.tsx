@@ -1,12 +1,13 @@
-import {memo, useMemo} from "react";
+import { memo, useMemo } from "react";
 import cls from './UIPaginator.module.css'
-import {UIIcon} from "../icon/UIIcon";
-import {IconName} from "../icon/types";
-import {classNames} from "../../lib";
+import { UIIcon } from "../icon/UIIcon";
+import { IconName } from "../icon/types";
+import { classNames } from "../../lib";
 
 interface IProps {
 	className?: string; // внешние классы для позиционирования пагинатора
-	pageNumbers: number[]; // массив с номерами страниц
+	totalPages: number; // кол-во страниц
+	perPage: number; // кол-во элементов на странице
 	currentPage: number; // выбранная страница
 	pageClick: (page: number) => void; // клик по конкретной странице
 	nextPageClick: () => void; // клик для перехода на следующую страницу
@@ -16,15 +17,12 @@ interface IProps {
 export const UIPaginator = memo((props: IProps) => {
 	const {
 		className = "",
-		pageNumbers,
 		currentPage = 1,
+		totalPages,
 		pageClick,
 		nextPageClick,
 		prevPageClick,
 	} = props;
-
-	const lastPageNumber = pageNumbers[pageNumbers.length - 1];
-	const totalPages = pageNumbers.length;
 
 	const pageClasses = (page: number): string => {
 		return classNames(cls.page, {
@@ -32,11 +30,11 @@ export const UIPaginator = memo((props: IProps) => {
 		});
 	};
 
-	const arrowClasses = (type: "left" | "right"): string => {
+	const arrowClasses = (arrowDirection: "left" | "right"): string => {
 		return classNames(cls.arrow, {
 			[cls.arrowDisable]:
-			(currentPage === 1 && type === "left") ||
-			(currentPage === lastPageNumber && type === "right"),
+			(currentPage === 1 && arrowDirection === "left") ||
+			(currentPage === totalPages && arrowDirection === "right"),
 		});
 	};
 
@@ -52,7 +50,7 @@ export const UIPaginator = memo((props: IProps) => {
 		}
 
 		return res;
-	}, [currentPage, pageNumbers.length])
+	}, [currentPage, totalPages])
 
 	if (totalPages <= 5) {
 		return (
@@ -62,7 +60,7 @@ export const UIPaginator = memo((props: IProps) => {
 				</div>
 
 				<ul className={cls.pageList}>
-					{pageNumbers.map((item) => (
+					{Array.from(Array(totalPages)).map((item) => (
 						<li
 							key={`page-${item}`}
 							className={pageClasses(item)}

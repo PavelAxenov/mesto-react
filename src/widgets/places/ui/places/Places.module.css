@@ -16,9 +16,20 @@
 	margin-top: 20px;
 }
 
-@media screen and (max-width: 920px) {
+.dropdown {
+	display: flex;
+	justify-content: flex-end;
+	margin: 0 0 20px 0;
+	width: 200px;
+}
+
+@media screen and (max-width: 880px) {
 	.cards {
 		padding: 0 20px 0;
+	}
+	.dropdown {
+		padding: 0 20px;
+		width: auto;
 	}
 }
 

@@ -11,3 +11,7 @@ export { UIInput } from './input/UIInput'
 export { InputType } from './input/types'
 
 export { UIPaginator } from './paginator/UIPaginator'
+
+
+export { UIDropdown } from './dropdown/UIDropdown'
+export type { IDropdownItem } from './dropdown/types'

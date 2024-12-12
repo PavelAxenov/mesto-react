@@ -20,7 +20,7 @@ import {
 } from "../../../../entities/places";
 import { PlaceCard } from "../../../../features/place-card";
 import { selectUserInfo } from "../../../../entities/user";
-import { UIPaginator } from "../../../../shared/ui";
+import {IDropdownItem, UIDropdown, UIPaginator} from "../../../../shared/ui";
 
 export const Places = () => {
 	const dispatch = useAppDispatch()
@@ -38,8 +38,28 @@ export const Places = () => {
 	const [selectedCard, setSelectedCard] = useState<ICard | null>(null);
 	const [deletingCard, setDeletingCard] = useState<ICard | null>(null);
 
-	const [itemsPerPage, setItemsPerPage] = useState(3)
 	const [currentPage, setCurrentPage] = useState(1)
+
+
+	const ITEMS_PER_PAGE: IDropdownItem[] = [
+		{
+			name: '3',
+			value: '3',
+			isAvailable: true
+		},
+		{
+			name: '5',
+			value: '5',
+			isAvailable: true
+		},
+		{
+			name: '10',
+			value: '10',
+			isAvailable: true
+		},
+	]
+	const [ selectedItem, setSelectedItem ] = useState<IDropdownItem>(ITEMS_PER_PAGE[1])
+	const [itemsPerPage, setItemsPerPage] = useState(Number(ITEMS_PER_PAGE[1].value))
 
 	// меняем массив карточек когда произошло удаление карточки
 	useEffect(() => {
@@ -118,6 +138,11 @@ export const Places = () => {
 		}
 	}
 
+	const handleDropdownClick = (item: IDropdownItem) => {
+		setSelectedItem(item);
+		setItemsPerPage(Number(item.name))
+	}
+
 	if (placesLoadingStatus === 'loading' || !currentUser) {
 		return (
 			<div className={cls.cards}>
@@ -136,6 +161,14 @@ export const Places = () => {
 
 	return (
 		<section className={cls.places}>
+			<div className={cls.dropdown}>
+				<UIDropdown
+					items={ITEMS_PER_PAGE}
+					selectedItem={selectedItem}
+					handleItemClick={handleDropdownClick}
+				/>
+			</div>
+
 			<ul className={cls.cards}>
 				{currentPlaces.length && currentPlaces.map((card: ICard) => (
 					<PlaceCard
@@ -150,7 +183,6 @@ export const Places = () => {
 
 			<UIPaginator
 				totalPages={pageNumbers.length}
-				perPage={itemsPerPage}
 				currentPage={currentPage}
 				pageClick={handlePageClick}
 				prevPageClick={() => changeCurrentPage('prev')}

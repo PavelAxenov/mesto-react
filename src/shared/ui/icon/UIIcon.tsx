@@ -1,4 +1,4 @@
-import {memo} from "react";
+import {memo, useMemo} from "react";
 import cls from './UIIcon.module.css'
 import {IconName, IconSize} from "./types";
 
@@ -11,16 +11,20 @@ import LogoIcon from './icons/logo.svg?react';
 import TrashIcon from './icons/trash.svg?react';
 import ChevronRight from './icons/chevron-right.svg?react';
 import ChevronLeft from './icons/chevron-left.svg?react';
+import {classNames} from "../../lib";
 
 interface IProps {
 	size?: IconSize;
 	iconName: IconName;
+	className?: string
 }
 
 export const UIIcon = memo((props: IProps) => {
-	const { size = IconSize.Md, iconName } = props;
+	const { size = IconSize.Md, iconName, className = '' } = props;
 
-	const iconClass = `${cls['ui-icon']} ${cls[`ui-icon-${size}`]}`
+	const iconClass = useMemo(() => {
+		return classNames(cls['ui-icon'], { size: cls[`ui-icon-${size}`] }, [className])
+	}, [size, className])
 
 	switch (iconName) {
 		case IconName.Add:

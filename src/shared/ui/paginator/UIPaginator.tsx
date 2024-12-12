@@ -7,7 +7,6 @@ import { classNames } from "../../lib";
 interface IProps {
 	className?: string; // внешние классы для позиционирования пагинатора
 	totalPages: number; // кол-во страниц
-	perPage: number; // кол-во элементов на странице
 	currentPage: number; // выбранная страница
 	pageClick: (page: number) => void; // клик по конкретной странице
 	nextPageClick: () => void; // клик для перехода на следующую страницу
@@ -17,7 +16,7 @@ interface IProps {
 export const UIPaginator = memo((props: IProps) => {
 	const {
 		className = "",
-		currentPage = 1,
+		currentPage,
 		totalPages,
 		pageClick,
 		nextPageClick,
@@ -60,7 +59,7 @@ export const UIPaginator = memo((props: IProps) => {
 				</div>
 
 				<ul className={cls.pageList}>
-					{Array.from(Array(totalPages)).map((item) => (
+					{Array.from(Array(totalPages), (_, i) => i + 1).map((item) => (
 						<li
 							key={`page-${item}`}
 							className={pageClasses(item)}

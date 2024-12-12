@@ -11,7 +11,7 @@ interface IProps {
 	selectedItem: IDropdownItem; // выбранный элемент
 
 	disabled?: boolean;
-	handleItemClick?: (item: IDropdownItem) => void // обработка клика по элементу дропдауна
+	handleItemClick: (item: IDropdownItem) => void // обработка клика по элементу дропдауна
 }
 
 export const UIDropdown = memo((props: IProps) => {
@@ -37,25 +37,37 @@ export const UIDropdown = memo((props: IProps) => {
 		setActiveDropdown(!isDropdownActive)
 	}
 
+	const handleTitleClick = () => {
+		setActiveDropdown(!isDropdownActive)
+	}
+
 	return (
 		<div className={classNames(cls.uiDropdown, {}, [className])}>
-			<div className={cls.selectedTitle} onClick={() => setActiveDropdown(!isDropdownActive)}>
+			<div
+				className={classNames(cls.selectedTitle, {[cls.uiDropdownDisabled]: disabled})}
+				onClick={handleTitleClick}
+			>
 				{selectedItem.name}
 
-				<UIIcon className={cls.selectedIcon} iconName={IconName.ChevronLeft} />
+				<UIIcon
+					className={classNames(cls.selectedIcon, {[cls.selectedIconActive]: isDropdownActive})}
+					iconName={IconName.ChevronLeft}
+				/>
 			</div>
 
-			<ul className={classNames(cls.list, {[cls.show]: isDropdownActive})}>
-				{items.map((item: IDropdownItem) => (
-					<li
-						key={item.value}
-						className={itemClasses(item)}
-						onClick={() => handleClick(item)}
-					>
-						{item.name}
-					</li>
-				))}
-			</ul>
+			{!disabled &&
+				<ul className={classNames(cls.list, {[cls.show]: isDropdownActive})}>
+					{items.map((item: IDropdownItem) => (
+						<li
+							key={item.value}
+							className={itemClasses(item)}
+							onClick={() => handleClick(item)}
+						>
+							{item.name}
+						</li>
+					))}
+				</ul>
+			}
 		</div>
 	)
 })

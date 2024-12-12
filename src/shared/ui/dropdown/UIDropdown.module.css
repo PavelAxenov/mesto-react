@@ -24,6 +24,11 @@
 	transform: rotate(90deg);
 }
 
+.selectedIconActive {
+	transform: rotate(-90deg);
+	transition: transform 0.3s ease;
+}
+
 .list {
 	position: absolute;
 	display: flex;
@@ -34,16 +39,17 @@
 
 	width: 100%;
 	background-color: black;
+	z-index: -1;
 
 	opacity: 0;
 	transform: translateY(-10px);
 	transition: opacity 0.3s ease, transform 0.3s ease;
-	z-index: -1;
 }
 
 .list.show {
 	opacity: 1;
 	transform: translateY(0);
+	transition: opacity 0.3s ease, transform 0.3s ease;
 	z-index: 2;
 }
 
@@ -65,14 +71,13 @@
 }
 
 .itemDisabled {
-	background: #bdbdbd;
+	background: #7c7c7c;
 	cursor: auto;
 
 	pointer-events: none;
 }
 
-@media screen and (max-width: 880px) {
-	.uiDropdown {
-
-	}
+.uiDropdownDisabled {
+	pointer-events: none;
+	background: #7c7c7c;
 }

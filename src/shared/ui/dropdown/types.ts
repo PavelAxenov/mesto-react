@@ -1,5 +1,5 @@
 export interface IDropdownItem {
-	name: string;
+	name: string | number;
 	value: string;
 	isAvailable: boolean;
 }

@@ -1,7 +1,7 @@
 import "../styles/index.css";
-import Main from '../../pages/Main';
 import styles from './App.module.css'
 import {Footer, Header} from "../../shared/ui";
+import {Main} from "../../pages";
 
 const App = () => {
 	return (

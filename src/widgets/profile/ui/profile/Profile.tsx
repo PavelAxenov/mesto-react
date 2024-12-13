@@ -3,18 +3,11 @@ import styles from "./Profile.module.css"
 import {useCallback, useEffect, useState} from "react";
 import { createPortal} from "react-dom";
 
-import { ProfileSkeleton } from "../skeleton/ProfileSkeleton";
 import { useAppDispatch, useAppSelector } from "../../../../shared/lib";
 import { IconName, IconSize, UIIcon } from "../../../../shared/ui";
 import { Modal } from "../../../../entities/modal";
 import { AddPlacePopup, EditAvatarPopup, EditProfilePopup } from "../../../../features/popups";
-import {
-	ChangedUserInfoType,
-	changeUserAvatar,
-	changeUserInfo,
-	selectUserInfo,
-	selectUserLoadingStatus
-} from "../../../../entities/user";
+import { ChangedUserInfoType, changeUserAvatar, changeUserInfo, selectUserInfo } from "../../../../entities/user";
 import { addCard, ChangedCardType, selectAddedCard, setAddedCard } from "../../../../entities/places";
 
 export const Profile = () => {
@@ -23,8 +16,6 @@ export const Profile = () => {
 	const [isAddPlacePopupOpen, setNewPlacePopup] = useState<boolean>(false);
 
 	const userInfo = useAppSelector(selectUserInfo);
-	const userLoadingStatus = useAppSelector(selectUserLoadingStatus);
-
 	const addedCard = useAppSelector(selectAddedCard)
 
 	const dispatch = useAppDispatch()
@@ -71,12 +62,6 @@ export const Profile = () => {
 		}
 	}, [addedCard])
 
-	if (userLoadingStatus === 'loading') {
-		return (
-			<ProfileSkeleton />
-		)
-	}
-
 	return (
 		<>
 			<section className={styles.profile}>
@@ -96,6 +81,7 @@ export const Profile = () => {
 						>
 						</button>
 					</div>
+
 					<div className={styles.profileInfo}>
 						<h1 className={styles.profileName}>{userInfo.name}</h1>
 

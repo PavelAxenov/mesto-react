@@ -1,9 +1,9 @@
-import {memo, useCallback, useMemo, useState} from "react";
+import {memo, useState} from "react";
 import cls from './UIDropdown.module.css'
 import {IDropdownItem} from "./types";
 import {classNames} from "../../lib";
-import {UIIcon} from "../icon/UIIcon";
-import {IconName} from "../icon/types";
+import {UIIcon} from "../ui-icon/UIIcon";
+import {IconName} from "../ui-icon/types";
 
 interface IProps {
 	className?: string; // внешние классы для позиционирования селекта

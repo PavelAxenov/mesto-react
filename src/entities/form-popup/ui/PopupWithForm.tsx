@@ -1,5 +1,5 @@
 import {FormEvent, memo, ReactNode} from "react";
-import styles from './PopupWithForm.module.css'
+import cls from './PopupWithForm.module.css'
 import {ButtonSize, ButtonType, UIButton} from "../../../shared/ui";
 
 interface IProps {
@@ -13,10 +13,10 @@ interface IProps {
 export const PopupWithForm = memo((props: IProps) => {
 	return (
 		<>
-			<h3 className={styles.formTitle}>{props.title}</h3>
+			<h3 className={cls.formTitle}>{props.title}</h3>
 
 			<form
-				className={styles.form}
+				className={cls.form}
 				name={props.name}
 				onSubmit={props.onSubmit}
 			>

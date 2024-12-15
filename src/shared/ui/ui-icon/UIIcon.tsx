@@ -1,6 +1,7 @@
-import {memo, useMemo} from "react";
+import { memo, useMemo } from "react";
 import cls from './UIIcon.module.css'
-import {IconName, IconSize} from "./types";
+import { IconName, IconSize } from "./types";
+import { classNames } from "../../lib";
 
 import AddIcon from './icons/add.svg?react';
 import CloseIcon from './icons/close.svg?react';
@@ -11,7 +12,7 @@ import LogoIcon from './icons/logo.svg?react';
 import TrashIcon from './icons/trash.svg?react';
 import ChevronRight from './icons/chevron-right.svg?react';
 import ChevronLeft from './icons/chevron-left.svg?react';
-import {classNames} from "../../lib";
+import PhotoPlug from './icons/photo-plug.svg?react';
 
 interface IProps {
 	size?: IconSize;
@@ -45,5 +46,7 @@ export const UIIcon = memo((props: IProps) => {
 			return <ChevronRight className={iconClass} />;
 		case IconName.ChevronLeft:
 			return <ChevronLeft className={iconClass} />;
+		case IconName.PhotoPlug:
+			return <PhotoPlug className={iconClass} />;
 	}
 });

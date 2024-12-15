@@ -1,4 +1,4 @@
-import styles from "./ConfirmPopup.module.css";
+import cls from "./ConfirmPopup.module.css";
 import {ButtonSize, UIButton} from "../../../../shared/ui";
 import {memo} from "react";
 
@@ -10,12 +10,12 @@ interface IProps {
 
 export const ConfirmPopup = memo((props: IProps) => {
 	return (
-		<div className={styles.confirmContainer}>
-			<h3 className={styles.title}>
+		<div className={cls.confirmContainer}>
+			<h3 className={cls.title}>
 				Вы действительно хотите удалить?
 			</h3>
 
-			<div className={styles.btnWrapper}>
+			<div className={cls.btnWrapper}>
 				<UIButton
 					text="Удалить"
 					size={ButtonSize.Sm}

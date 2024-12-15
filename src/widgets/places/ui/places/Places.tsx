@@ -17,7 +17,7 @@ import {
 	setLikedCard
 } from "../../../../entities/places";
 import { PlaceCard } from "../../../../features/place-card";
-import { IDropdownItem, UIDropdown, UIPaginator } from "../../../../shared/ui";
+import {IDropdownItem, UIDropdown, UIPaginator} from "../../../../shared/ui";
 import { ITEMS_PER_PAGE } from "../../model/consts";
 
 export const Places = () => {

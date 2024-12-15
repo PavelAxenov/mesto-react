@@ -1,4 +1,4 @@
-import styles from './UIButton.module.css'
+import cls from './UIButton.module.css'
 import {ButtonSize, ButtonType, ButtonVariant} from "./types";
 import {memo} from "react";
 
@@ -13,7 +13,7 @@ interface IProps {
 export const UIButton = memo((props: IProps) => {
 	const { text, size = ButtonSize.Md, variant = ButtonVariant.Default, type = ButtonType.Default } = props;
 
-	const btnClass = `${styles['ui-button']} ${styles[`ui-button-${size}`]} ${styles[`ui-button-${variant}`]}`
+	const btnClass = `${cls['ui-button']} ${cls[`ui-button-${size}`]} ${cls[`ui-button-${variant}`]}`
 
 	return (
 		<button

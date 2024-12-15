@@ -1,17 +1,19 @@
 export { Header } from './header/Header'
 export { Footer } from './footer/Footer'
 
-export { UIButton } from './button/UIButton'
-export { ButtonSize, ButtonVariant, ButtonType } from './button/types'
+export { UIButton } from './ui-button/UIButton'
+export { ButtonSize, ButtonVariant, ButtonType } from './ui-button/types'
 
-export { UIIcon } from './icon/UIIcon'
-export { IconSize, IconName } from './icon/types'
+export { UIIcon } from './ui-icon/UIIcon'
+export { IconSize, IconName } from './ui-icon/types'
 
-export { UIInput } from './input/UIInput'
-export { InputType } from './input/types'
+export { UIInput } from './ui-input/UIInput'
+export { InputType } from './ui-input/types'
 
-export { UIPaginator } from './paginator/UIPaginator'
+export { UIPaginator } from './ui-paginator/UIPaginator'
 
 
-export { UIDropdown } from './dropdown/UIDropdown'
-export type { IDropdownItem } from './dropdown/types'
+export { UIDropdown } from './ui-dropdown/UIDropdown'
+export type { IDropdownItem } from './ui-dropdown/types'
+
+export { UIImage } from './ui-image/UIImage'

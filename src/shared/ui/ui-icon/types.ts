@@ -15,4 +15,5 @@ export const enum IconName {
 	Trash = 'trash',
 	ChevronLeft = 'chevron-left',
 	ChevronRight = 'chevron-right',
+	PhotoPlug = 'photo-plug',
 }

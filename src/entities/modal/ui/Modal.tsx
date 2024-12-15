@@ -1,4 +1,4 @@
-import styles from "./Modal.module.css";
+import cls from "./Modal.module.css";
 import {memo, ReactNode} from "react";
 import {ModalType} from "../model/types/modal";
 import {IconName, UIIcon} from "../../../shared/ui";
@@ -16,12 +16,12 @@ const defaultProps: IProps = {
 }
 
 export const Modal = memo((props: IProps = defaultProps) => {
-	const modalClasses: string = `${props.type === ModalType.Image ? styles.modalImage : styles.modal}`
+	const modalClasses: string = `${props.type === ModalType.Image ? cls.modalImage : cls.modal}`
 
 	return (
-		<div className={styles.overlay}>
+		<div className={cls.overlay}>
 			<div className={modalClasses}>
-				<div className={styles.closeBtn} onClick={props.onClose}>
+				<div className={cls.closeBtn} onClick={props.onClose}>
 					<UIIcon iconName={IconName.Close} />
 				</div>
 				{props.children}

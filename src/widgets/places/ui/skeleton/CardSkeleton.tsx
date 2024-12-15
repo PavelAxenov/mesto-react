@@ -1,17 +1,17 @@
-import styles from './CardSkeleton.module.css'
+import cls from './CardSkeleton.module.css'
 export const CardSkeleton = () => {
 	return (
-		<div className={styles.skeletonContainer}>
-			<div className={styles.placesSkeletonWrapper}>
+		<div className={cls.skeletonContainer}>
+			<div className={cls.placesSkeletonWrapper}>
 
 				{[1,2,3,4,5].map((n) => (
-					<div key={n} className={styles.placeSkeleton}>
-						<div className={styles.placeImgSkeleton}></div>
+					<div key={n} className={cls.placeSkeleton}>
+						<div className={cls.placeImgSkeleton}></div>
 
-						<div className={styles.placeInfoSkeleton}>
-							<div className={styles.placeTitleSkeleton}></div>
+						<div className={cls.placeInfoSkeleton}>
+							<div className={cls.placeTitleSkeleton}></div>
 
-							<div className={styles.placeLikesSkeleton}></div>
+							<div className={cls.placeLikesSkeleton}></div>
 						</div>
 					</div>
 				))}

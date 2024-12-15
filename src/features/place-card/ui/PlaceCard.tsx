@@ -1,9 +1,9 @@
-import styles from "./PlaceCard.module.css"
-import { IconName, IconSize, UIIcon } from "../../../shared/ui";
+import cls from "./PlaceCard.module.css"
+import {IconName, IconSize, UIIcon, UIImage} from "../../../shared/ui";
 import { useAppSelector } from "../../../shared/lib";
 import { ICard } from "../../../entities/places";
 import { IUserInfo, selectUserInfo } from "../../../entities/user";
-import {useCallback} from "react";
+import { useCallback } from "react";
 
 interface IProps {
 	card: ICard,
@@ -35,31 +35,31 @@ export const PlaceCard = (props: IProps) => {
 	},[card])
 
 	return (
-		<li className={styles.placeCard}>
+		<li className={cls.placeCard}>
 			{isOwn &&
 				<button
 					type="button"
-					className={styles.removeBtn}
+					className={cls.removeBtn}
 					onClick={handleDeleteClick}
 				>
 					<UIIcon iconName={IconName.Trash} size={IconSize.Sm}/>
 				</button>
 			}
 
-			<img
+			<UIImage
 				src={card.link}
 				alt={card.name}
-				className={styles.placesImg}
+				className={cls.placesImg}
 				onClick={handleImageClick}
 			/>
 
-			<div className={styles.placeInfo}>
-				<h2 className={styles.placeTitle}>{card.name}</h2>
+			<div className={cls.placeInfo}>
+				<h2 className={cls.placeTitle}>{card.name}</h2>
 
-				<div className={styles.likeContainer}>
+				<div className={cls.likeContainer}>
 					<button
 						type="button"
-						className={styles.likeBtn}
+						className={cls.likeBtn}
 						onClick={handleLikeClick}
 					>
 						{isLiked ?
@@ -68,7 +68,7 @@ export const PlaceCard = (props: IProps) => {
 							<UIIcon iconName={IconName.Heart} size={IconSize.Sm} />}
 					</button>
 
-					<p className={styles.likeCounter}>{card.likes.length}</p>
+					<p className={cls.likeCounter}>{card.likes.length}</p>
 				</div>
 			</div>
 		</li>

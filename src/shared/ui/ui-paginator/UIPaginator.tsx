@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import cls from './UIPaginator.module.css'
-import { UIIcon } from "../icon/UIIcon";
-import { IconName } from "../icon/types";
+import { UIIcon } from "../ui-icon/UIIcon";
+import { IconName } from "../ui-icon/types";
 import { classNames } from "../../lib";
 
 interface IProps {

@@ -1,5 +1,5 @@
 import { ChangeEvent, memo } from 'react';
-import styles from './UIInput.module.css'
+import cls from './UIInput.module.css'
 import {InputType} from "./types";
 
 
@@ -24,7 +24,7 @@ export const UIInput = memo((props: IProps) => {
 		handleValueChange,
 	} = props;
 
-	const inputClass = `${styles['ui-input']}`
+	const inputClass = `${cls['ui-input']}`
 
 	return (
 		<input

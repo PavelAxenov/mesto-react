@@ -1,4 +1,4 @@
-import styles from "./Profile.module.css"
+import cls from "./Profile.module.css"
 
 import {useCallback, useEffect, useState} from "react";
 import { createPortal} from "react-dom";
@@ -64,44 +64,44 @@ export const Profile = () => {
 
 	return (
 		<>
-			<section className={styles.profile}>
-				<div className={styles.profileContainer}>
-					<div className={styles.avatarContainer}>
+			<section className={cls.profile}>
+				<div className={cls.profileContainer}>
+					<div className={cls.avatarContainer}>
 						<img
 							src={userInfo.avatar}
 							alt={userInfo.name}
-							className={styles.avatar}
+							className={cls.avatar}
 						/>
 
 						<button
 							aria-label="Изменить аватар"
 							type="button"
-							className={styles.avatarEditBtn}
+							className={cls.avatarEditBtn}
 							onClick={onEditAvatarClick}
 						>
 						</button>
 					</div>
 
-					<div className={styles.profileInfo}>
-						<h1 className={styles.profileName}>{userInfo.name}</h1>
+					<div className={cls.profileInfo}>
+						<h1 className={cls.profileName}>{userInfo.name}</h1>
 
 						<button
 							aria-label="Изменить"
 							type="button"
-							className={styles.profileEditBtn}
+							className={cls.profileEditBtn}
 							onClick={onEditProfileClick}
 						>
 							<UIIcon iconName={IconName.Edit} size={IconSize.Sm} />
 						</button>
 
-						<p className={styles.profileDescription}>{userInfo.about}</p>
+						<p className={cls.profileDescription}>{userInfo.about}</p>
 					</div>
 				</div>
 
 				<button
 					aria-label="Добавить"
 					type="button"
-					className={styles.addBtn}
+					className={cls.addBtn}
 					onClick={addNewPlaceClick}
 				>
 					<UIIcon iconName={IconName.Add} size={IconSize.Md} />

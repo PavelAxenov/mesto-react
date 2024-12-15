@@ -1,12 +1,12 @@
 import "../styles/index.css";
-import styles from './App.module.css'
+import cls from './App.module.css'
 import {Footer, Header} from "../../shared/ui";
 import {Main} from "../../pages";
 
 const App = () => {
 	return (
-		<div className={styles.app}>
-			<div className={styles.page}>
+		<div className={cls.app}>
+			<div className={cls.page}>
 				<Header />
 
 				<Main />

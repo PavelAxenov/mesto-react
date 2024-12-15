@@ -9,11 +9,10 @@ export function classNames(
 
 	for (const [className, value] of Object.entries(mods)) {
 		if (value) {
-			// Type guard to handle string values correctly
 			if (typeof value === 'string') {
 				classes.push(value);
 			} else {
-				classes.push(className); //Boolean values use the className as the class
+				classes.push(className);
 			}
 		}
 	}

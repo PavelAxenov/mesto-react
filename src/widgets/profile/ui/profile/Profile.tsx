@@ -4,7 +4,7 @@ import {useCallback, useEffect, useState} from "react";
 import { createPortal} from "react-dom";
 
 import { useAppDispatch, useAppSelector } from "../../../../shared/lib";
-import { IconName, IconSize, UIIcon } from "../../../../shared/ui";
+import {IconName, IconSize, UIIcon, UIImage} from "../../../../shared/ui";
 import { Modal } from "../../../../entities/modal";
 import { AddPlacePopup, EditAvatarPopup, EditProfilePopup } from "../../../../features/popups";
 import { ChangedUserInfoType, changeUserAvatar, changeUserInfo, selectUserInfo } from "../../../../entities/user";
@@ -67,7 +67,7 @@ export const Profile = () => {
 			<section className={cls.profile}>
 				<div className={cls.profileContainer}>
 					<div className={cls.avatarContainer}>
-						<img
+						<UIImage
 							src={userInfo.avatar}
 							alt={userInfo.name}
 							className={cls.avatar}

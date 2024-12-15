@@ -1,4 +1,4 @@
-import {memo, useMemo, useState} from 'react';
+import { memo, useMemo, useState } from 'react';
 import { UIIcon } from "../ui-icon/UIIcon";
 import { IconName } from "../ui-icon/types";
 import cls from './UIImage.module.css'

@@ -26,12 +26,16 @@ export const UIImage = memo((props: IProps) => {
 	const handleImgLoadingStatus = () => {
 		setIsLoading(false)
 		setIsError(false)
-		onLoad()
+		if (onLoad) {
+			onLoad()
+		}
 	}
 	const handleImgErrorStatus = () => {
 		setIsLoading(false)
 		setIsError(true)
-		onError()
+		if (onError) {
+			onError()
+		}
 	}
 
 	return (

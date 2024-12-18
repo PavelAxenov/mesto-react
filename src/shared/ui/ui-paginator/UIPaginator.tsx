@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import cls from './UIPaginator.module.css'
 import { UIIcon } from "../ui-icon/UIIcon";
-import { IconName } from "../ui-icon/types";
+import {IconName, IconTheme} from "../ui-icon/types";
 import { classNames } from "../../lib";
 
 interface IProps {
@@ -55,7 +55,7 @@ export const UIPaginator = memo((props: IProps) => {
 		return (
 			<div className={classNames(cls.uiPaginator, {}, [className])}>
 				<div className={arrowClasses("left")} onClick={prevPageClick}>
-					<UIIcon iconName={IconName.ChevronLeft} />
+					<UIIcon iconName={IconName.ChevronLeft} theme={IconTheme.Light} />
 				</div>
 
 				<ul className={cls.pageList}>
@@ -71,7 +71,7 @@ export const UIPaginator = memo((props: IProps) => {
 				</ul>
 
 				<div className={arrowClasses("right")} onClick={nextPageClick}>
-					<UIIcon iconName={IconName.ChevronRight} />
+					<UIIcon iconName={IconName.ChevronRight} theme={IconTheme.Light} />
 				</div>
 			</div>
 		);
@@ -80,7 +80,7 @@ export const UIPaginator = memo((props: IProps) => {
 	return (
 		<div className={classNames(cls.uiPaginator, {}, [className])}>
 			<div className={arrowClasses("left")} onClick={prevPageClick}>
-				<UIIcon iconName={IconName.ChevronLeft} />
+				<UIIcon iconName={IconName.ChevronLeft} theme={IconTheme.Light} />
 			</div>
 
 			<ul className={cls.pageList}>
@@ -110,7 +110,7 @@ export const UIPaginator = memo((props: IProps) => {
 			</ul>
 
 			<div className={arrowClasses("right")} onClick={nextPageClick}>
-				<UIIcon iconName={IconName.ChevronRight} />
+				<UIIcon iconName={IconName.ChevronRight} theme={IconTheme.Light} />
 			</div>
 		</div>
 	);

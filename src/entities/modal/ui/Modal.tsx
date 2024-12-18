@@ -1,7 +1,7 @@
 import cls from "./Modal.module.css";
 import {memo, ReactNode} from "react";
 import {ModalType} from "../model/types/modal";
-import {IconName, UIIcon} from "../../../shared/ui";
+import {IconName, IconTheme, UIIcon} from "../../../shared/ui";
 
 interface IProps {
 	type?: ModalType;
@@ -22,7 +22,10 @@ export const Modal = memo((props: IProps = defaultProps) => {
 		<div className={cls.overlay}>
 			<div className={modalClasses}>
 				<div className={cls.closeBtn} onClick={props.onClose}>
-					<UIIcon iconName={IconName.Close} />
+					<UIIcon
+						iconName={IconName.Close}
+						theme={IconTheme.Light}
+					/>
 				</div>
 				{props.children}
 			</div>

@@ -1,7 +1,27 @@
+@import url(../styles/skeleton.css);
+
 .uiImage {
 	width: 100%;
 }
 
+/*стли для заглушки*/
 .plugIcon {
 	width: 100%;
+}
+
+/*стили для лоадера картинки*/
+.imgLoader {
+	border-radius: 10px 10px 0 0;
+	width: 100%;
+	height: 280px;
+	animation: shine 1s ease infinite;
+}
+
+.imgHidden {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	object-fit: cover;
 }

@@ -3,7 +3,7 @@ import cls from './UIDropdown.module.css'
 import {IDropdownItem} from "./types";
 import {classNames} from "../../lib";
 import {UIIcon} from "../ui-icon/UIIcon";
-import {IconName} from "../ui-icon/types";
+import {IconName, IconTheme} from "../ui-icon/types";
 
 interface IProps {
 	className?: string; // внешние классы для позиционирования селекта
@@ -52,6 +52,7 @@ export const UIDropdown = memo((props: IProps) => {
 				<UIIcon
 					className={classNames(cls.selectedIcon, {[cls.selectedIconActive]: isDropdownActive})}
 					iconName={IconName.ChevronLeft}
+					theme={IconTheme.Light}
 				/>
 			</div>
 

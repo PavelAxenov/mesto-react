@@ -12,3 +12,19 @@
 .ui-icon-lg {
 	width: 32px;
 }
+
+.ui-icon-default {
+	fill: #000;
+}
+
+.ui-icon-danger {
+	fill: #ff0000;
+}
+
+.ui-icon-light {
+	fill: #fff;
+}
+
+.ui-icon-secondary {
+	fill: #5f6368;
+}

@@ -1,5 +1,5 @@
 import cls from "./PlaceCard.module.css"
-import {IconName, IconSize, UIIcon, UIImage} from "../../../shared/ui";
+import {IconName, IconSize, IconTheme, UIIcon, UIImage} from "../../../shared/ui";
 import { useAppSelector } from "../../../shared/lib";
 import { ICard } from "../../../entities/places";
 import { IUserInfo, selectUserInfo } from "../../../entities/user";
@@ -42,7 +42,11 @@ export const PlaceCard = (props: IProps) => {
 					className={cls.removeBtn}
 					onClick={handleDeleteClick}
 				>
-					<UIIcon iconName={IconName.Trash} size={IconSize.Sm}/>
+					<UIIcon
+						iconName={IconName.Trash}
+						size={IconSize.Sm}
+						theme={IconTheme.Light}
+					/>
 				</button>
 			}
 

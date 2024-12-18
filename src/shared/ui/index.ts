@@ -5,7 +5,7 @@ export { UIButton } from './ui-button/UIButton'
 export { ButtonSize, ButtonVariant, ButtonType } from './ui-button/types'
 
 export { UIIcon } from './ui-icon/UIIcon'
-export { IconSize, IconName } from './ui-icon/types'
+export { IconSize, IconName, IconTheme } from './ui-icon/types'
 
 export { UIInput } from './ui-input/UIInput'
 export { InputType } from './ui-input/types'

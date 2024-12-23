@@ -1,5 +1,5 @@
 import cls from "./Modal.module.css";
-import {memo, ReactNode} from "react";
+import React, {memo, ReactNode, useRef} from "react";
 import {ModalType} from "../model/types/modal";
 import {IconName, IconTheme, UIIcon} from "../../../shared/ui";
 
@@ -16,11 +16,20 @@ const defaultProps: IProps = {
 }
 
 export const Modal = memo((props: IProps = defaultProps) => {
+	const modalRef = useRef<HTMLDivElement | null>(null);
+
+	const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		//Проверяем, клик произошел внутри модалки или нет
+		if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+			props.onClose();
+		}
+	};
+
 	const modalClasses: string = `${props.type === ModalType.Image ? cls.modalImage : cls.modal}`
 
 	return (
-		<div className={cls.overlay}>
-			<div className={modalClasses}>
+		<div className={cls.overlay} onClick={handleClick}>
+			<div ref={modalRef} className={modalClasses}>
 				<div className={cls.closeBtn} onClick={props.onClose}>
 					<UIIcon
 						iconName={IconName.Close}

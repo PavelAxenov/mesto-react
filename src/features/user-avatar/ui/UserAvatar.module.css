@@ -1,0 +1,31 @@
+.avatar {
+	position: relative;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+}
+
+.avatarImg {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+}
+
+.editBtn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	border: 0;
+
+	cursor: pointer;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 880px) {
+	.avatarImg {
+		align-self: center;
+	}
+}

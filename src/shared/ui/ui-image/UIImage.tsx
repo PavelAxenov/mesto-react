@@ -5,12 +5,12 @@ import cls from './UIImage.module.css'
 import { classNames } from "../../lib";
 
 interface IProps {
-	src: string;
-	alt: string;
-	className?: string;
-	onLoad?: () => void;
-	onError?: () => void;
-	onClick?: () => void;
+	src: string; // ссылка на картинку
+	alt: string; // подпись картинки если не загрузилась
+	className?: string; // внешние классы
+	onLoad?: () => void; // ф-ция если картинка загружается
+	onError?: () => void; // ф-ция если картинка загружзилась с ошибкой
+	onClick?: () => void; // ф-ция если картинка загружается
 }
 
 export const UIImage = memo((props: IProps) => {
@@ -30,6 +30,7 @@ export const UIImage = memo((props: IProps) => {
 			onLoad()
 		}
 	}, [])
+
 	const handleImgErrorStatus = useCallback(() => {
 		setIsLoading(false)
 		setIsError(true)

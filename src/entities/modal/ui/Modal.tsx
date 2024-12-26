@@ -1,5 +1,5 @@
 import cls from "./Modal.module.css";
-import React, {memo, ReactNode, useRef} from "react";
+import React, {memo, ReactNode, useEffect, useRef} from "react";
 import {ModalType} from "../model/types/modal";
 import {IconName, IconTheme, UIIcon} from "../../../shared/ui";
 
@@ -24,6 +24,19 @@ export const Modal = memo((props: IProps = defaultProps) => {
 			props.onClose();
 		}
 	};
+
+	const keyPress = (event: KeyboardEvent) => {
+		if (event.key === 'Escape') {
+			props.onClose();
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener('keydown', keyPress);
+		return () => {
+			document.removeEventListener('keydown', keyPress);
+		};
+	}, [props.onClose]);
 
 	const modalClasses: string = `${props.type === ModalType.Image ? cls.modalImage : cls.modal}`
 

@@ -16,10 +16,10 @@ import ChevronLeft from './icons/chevron-left.svg?react';
 import PhotoPlug from './icons/photo-plug.svg?react';
 
 interface IProps {
-	iconName: IconName;
-	size?: IconSize;
-	theme?: IconTheme;
-	className?: string
+	iconName: IconName; // имя иконки из уже имеющихся
+	size?: IconSize; // размер иконки
+	theme?: IconTheme; // тема иконки
+	className?: string // внешние классы для иконки
 }
 
 export const UIIcon = memo((props: IProps) => {

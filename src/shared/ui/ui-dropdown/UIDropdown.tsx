@@ -1,4 +1,4 @@
-import {memo, useState} from "react";
+import React, {memo, useEffect, useRef, useState} from "react";
 import cls from './UIDropdown.module.css'
 import {IDropdownItem} from "./types";
 import {classNames} from "../../lib";
@@ -10,11 +10,13 @@ interface IProps {
 	items: Array<IDropdownItem>; // массив элементов для отображения
 	selectedItem: IDropdownItem; // выбранный элемент
 
-	disabled?: boolean;
+	disabled?: boolean; // кликнуть на раскрытие дропдауна будет невозможно
 	handleItemClick: (item: IDropdownItem) => void // обработка клика по элементу дропдауна
 }
 
 export const UIDropdown = memo((props: IProps) => {
+	const dropdownRef = useRef<HTMLDivElement | null>(null);
+
 	const {
 		className = '',
 		items,
@@ -23,8 +25,10 @@ export const UIDropdown = memo((props: IProps) => {
 		handleItemClick,
 	} = props;
 
+	// переключение раскрытия/скрытия выпадающего списка
 	const [isDropdownActive, setActiveDropdown] = useState<boolean>(false)
 
+	// классы для элемента выпадающего списка
 	const itemClasses = (item: IDropdownItem): string => {
 		return classNames(cls.item, {
 			[cls.itemActive]: selectedItem.value === item.value,
@@ -32,17 +36,35 @@ export const UIDropdown = memo((props: IProps) => {
 		}, [])
 	}
 
+	// клик по элементу в выпадающем списке
 	const handleClick = (item: IDropdownItem) => {
 		handleItemClick(item)
 		setActiveDropdown(!isDropdownActive)
 	}
 
+	// обработка клика по раскрывающемуся элементу дропдауна
 	const handleTitleClick = () => {
 		setActiveDropdown(!isDropdownActive)
 	}
 
+	const handleClickOutside = (event: MouseEvent) => {
+		if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+			if (isDropdownActive) {
+				handleTitleClick();
+			}
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [isDropdownActive])
+
 	return (
-		<div className={classNames(cls.uiDropdown, {}, [className])}>
+		<div ref={dropdownRef} className={classNames(cls.uiDropdown, {}, [className])}>
 			<div
 				className={classNames(cls.selectedTitle, {[cls.uiDropdownDisabled]: disabled})}
 				onClick={handleTitleClick}

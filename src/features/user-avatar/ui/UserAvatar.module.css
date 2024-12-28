@@ -1,24 +1,24 @@
 .avatar {
 	position: relative;
-	width: 120px;
-	height: 120px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 }
 
 .avatarImg {
-	width: 120px;
-	height: 120px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .editBtn {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 120px;
-	height: 120px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
-	border: 0;
 
 	cursor: pointer;
 	background: rgba(0, 0, 0, 0.6);

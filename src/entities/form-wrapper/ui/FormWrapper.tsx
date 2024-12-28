@@ -1,5 +1,5 @@
 import {FormEvent, memo, ReactNode} from "react";
-import cls from './PopupWithForm.module.css'
+import cls from './FormWrapper.module.css'
 import {ButtonSize, ButtonType, UIButton} from "../../../shared/ui";
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 	children: ReactNode
 }
 
-export const PopupWithForm = memo((props: IProps) => {
+export const FormWrapper = memo((props: IProps) => {
 	return (
 		<>
 			<h3 className={cls.formTitle}>{props.title}</h3>

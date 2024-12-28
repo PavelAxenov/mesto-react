@@ -1,4 +1,4 @@
-import cls from "./Modal.module.css";
+import cls from "./ModalWrapper.module.css";
 import React, {memo, ReactNode, useEffect, useRef} from "react";
 import {ModalType} from "../model/types/modal";
 import {IconName, IconTheme, UIIcon} from "../../../shared/ui";
@@ -15,7 +15,7 @@ const defaultProps: IProps = {
 	onClose: () => {}
 }
 
-export const Modal = memo((props: IProps = defaultProps) => {
+export const ModalWrapper = memo((props: IProps = defaultProps) => {
 	const modalRef = useRef<HTMLDivElement | null>(null);
 
 	const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {

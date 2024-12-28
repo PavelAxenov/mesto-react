@@ -9,25 +9,18 @@ import { RequestStatus } from "../../shared/model";
 export const Main = () => {
 	const places = useAppSelector(selectPlaces)
 	const placesLoadingStatus = useAppSelector(selectPlacesLoadingStatus)
-	const userLoadingStatus = useAppSelector(selectUserLoadingStatus);
 
 	const dispatch = useAppDispatch()
 
-	// получение информации пользователя
-	useEffect(() => {
-		dispatch(fetchUser())
-	}, [])
 
 	// получение карточек
 	useEffect(() => {
 		dispatch(fetchCards())
 	}, [])
 
-	if (placesLoadingStatus === RequestStatus.Loading || userLoadingStatus === RequestStatus.Loading) {
+	if (placesLoadingStatus === RequestStatus.Loading) {
 		return (
 			<>
-				<ProfileSkeleton />
-
 				<CardSkeleton />
 			</>
 		)
@@ -35,8 +28,6 @@ export const Main = () => {
 
 	return (
 		<main>
-			<Profile />
-
 			{!places.length ? <h3>Карточек нет</h3> : <Places/>}
 		</main>
 	);

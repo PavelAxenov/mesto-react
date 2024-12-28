@@ -1,9 +1,20 @@
 import "../styles/index.css";
 import cls from './App.module.css'
-import {Footer, Header} from "../../shared/ui";
-import {Main} from "../../pages";
+import { Header } from "./header/Header";
+import { Main } from "../../pages";
+import { Footer } from "../../shared/ui";
+import {useEffect} from "react";
+import {fetchUser} from "../../entities/user";
+import {useAppDispatch} from "../../shared/lib";
 
 const App = () => {
+	const dispatch = useAppDispatch()
+
+	// получение информации пользователя
+	useEffect(() => {
+		dispatch(fetchUser())
+	}, [])
+
 	return (
 		<div className={cls.app}>
 			<div className={cls.page}>

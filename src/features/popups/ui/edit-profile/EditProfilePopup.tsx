@@ -1,4 +1,4 @@
-import {PopupWithForm} from "../../../../entities/form-popup";
+import {FormWrapper} from "../../../../entities/form-wrapper";
 import {ChangeEvent, FormEvent, memo, useCallback, useEffect, useState} from "react";
 import {UIInput} from "../../../../shared/ui";
 import {ChangedUserInfoType} from "../../../../entities/user";
@@ -36,7 +36,7 @@ export const EditProfilePopup = memo((props: IProps) => {
 	}, [props.onUpdateUser, name, description])
 
 	return (
-		<PopupWithForm
+		<FormWrapper
 			title="Редактировать профиль"
 			name="edit"
 			buttonText="Сохранить"
@@ -54,6 +54,6 @@ export const EditProfilePopup = memo((props: IProps) => {
 				handleValueChange={handleDescriptionChange}
 				maxLength={400}
 			/>
-		</PopupWithForm>
+		</FormWrapper>
 	);
 })

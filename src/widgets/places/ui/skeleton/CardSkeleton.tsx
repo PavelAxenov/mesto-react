@@ -4,7 +4,7 @@ export const CardSkeleton = () => {
 		<div className={cls.skeletonContainer}>
 			<div className={cls.placesSkeletonWrapper}>
 
-				{Array.from(Array(5), (_, i) => i + 1).map((n) => (
+				{Array.from(Array(3), (_, i) => i + 1).map((n) => (
 					<div key={n} className={cls.placeSkeleton}>
 						<div className={cls.placeImgSkeleton}></div>
 

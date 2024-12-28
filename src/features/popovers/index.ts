@@ -1,0 +1,1 @@
+export { UserAvatarPopover } from './ui/user-avatar/UserAvatarPopover'

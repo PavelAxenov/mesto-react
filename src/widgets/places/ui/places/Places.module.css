@@ -1,5 +1,41 @@
 .places {
-	margin-top: 50px;
+	margin-top: 20px;
+}
+
+.cardsControls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.addBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	margin: 0;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.addBtn:hover {
+	opacity: .6;
+}
+
+.dropdownWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.dropdown {
+	width: 60px;
+}
+
+.dropdownTitle {
+	font-size: 16px;
+	line-height: 20px;
 }
 
 .cards {
@@ -16,20 +52,23 @@
 	margin-top: 20px;
 }
 
-.dropdown {
-	display: flex;
-	justify-content: flex-end;
-	margin: 0 0 20px auto;
-	width: 200px;
-}
-
 @media screen and (max-width: 880px) {
 	.cards {
 		padding: 0 20px 0;
 	}
-	.dropdown {
+
+	.cardsControls {
 		padding: 0 20px;
+	}
+
+	.dropdownWrapper {
 		width: auto;
+		justify-content: center;
+	}
+
+	.dropdownTitle {
+		font-size: 14px;
+		line-height: 18px;
 	}
 }
 

@@ -1,6 +1,10 @@
 .ui-icon {
 }
 
+.ui-icon-xs {
+	width: 12px;
+}
+
 .ui-icon-sm {
 	width: 16px;
 }

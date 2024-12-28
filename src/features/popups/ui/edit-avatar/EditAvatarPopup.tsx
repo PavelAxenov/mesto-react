@@ -1,6 +1,6 @@
 import {ChangeEvent, FormEvent, useCallback, useEffect, useState} from "react";
 import {InputType, UIInput} from "../../../../shared/ui";
-import {PopupWithForm} from "../../../../entities/form-popup";
+import {FormWrapper} from "../../../../entities/form-wrapper";
 
 interface IProps {
 	onUpdateAvatar: (avatar: string) => void,
@@ -24,7 +24,7 @@ export const EditAvatarPopup = (props: IProps) => {
 	}, [avatar])
 
 	return (
-		<PopupWithForm
+		<FormWrapper
 			title="Обновить аватар"
 			name="edit-avatar"
 			buttonText="Сохранить"
@@ -36,6 +36,6 @@ export const EditAvatarPopup = (props: IProps) => {
 				placeholder="Ссылка на аватар"
 				handleValueChange={handleAvatarLink}
 			/>
-		</PopupWithForm>
+		</FormWrapper>
 	);
 }

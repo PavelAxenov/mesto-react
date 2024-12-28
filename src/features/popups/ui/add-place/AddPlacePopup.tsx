@@ -1,6 +1,6 @@
 import {ChangeEvent, FormEvent, memo, useCallback, useEffect, useState} from "react";
 import { InputType, UIInput } from "../../../../shared/ui";
-import { PopupWithForm } from "../../../../entities/form-popup";
+import { FormWrapper } from "../../../../entities/form-wrapper";
 import { ChangedCardType } from "../../../../entities/places";
 
 interface IProps {
@@ -39,7 +39,7 @@ export const AddPlacePopup = memo((props: IProps) => {
 	}
 
 	return (
-		<PopupWithForm
+		<FormWrapper
 			title="Новое место"
 			name="add-card"
 			buttonText="Добавить"
@@ -59,6 +59,6 @@ export const AddPlacePopup = memo((props: IProps) => {
 				placeholder="Ссылка на картинку"
 				handleValueChange={handleLinkChange}
 			/>
-		</PopupWithForm>
+		</FormWrapper>
 	);
 })

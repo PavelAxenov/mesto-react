@@ -36,6 +36,7 @@
 .dropdownTitle {
 	font-size: 16px;
 	line-height: 20px;
+	margin-right: 4px;
 }
 
 .cards {
@@ -59,11 +60,11 @@
 
 	.cardsControls {
 		padding: 0 20px;
+		gap: 15px;
 	}
 
 	.dropdownWrapper {
 		width: auto;
-		justify-content: center;
 	}
 
 	.dropdownTitle {

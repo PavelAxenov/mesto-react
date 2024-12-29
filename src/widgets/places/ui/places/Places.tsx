@@ -159,7 +159,7 @@ export const Places = () => {
 				</button>
 
 				<div className={cls.dropdownWrapper}>
-					<span className={cls.dropdownTitle}>Кол-во карточек на странице:&nbsp;</span>
+					<span className={cls.dropdownTitle}>Карточек на странице:</span>
 					<UIDropdown
 						className={cls.dropdown}
 						items={ITEMS_PER_PAGE}

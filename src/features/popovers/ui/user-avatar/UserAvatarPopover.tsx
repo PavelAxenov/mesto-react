@@ -13,7 +13,7 @@ export const UserAvatarPopover = (props: IProps) => {
 	const { userInfo, onEditProfileClick, onEditAvatarClick } = props;
 
 	return (
-		<div>
+		<>
 			<div className={cls.profileInfo}>
 				<span className={cls.profileName}>{userInfo.name}</span>
 				<span className={cls.profileDescription}>{userInfo.about}</span>
@@ -43,6 +43,6 @@ export const UserAvatarPopover = (props: IProps) => {
 				/>
 				<span>Редактировать аватар</span>
 			</button>
-		</div>
+		</>
 	);
 };

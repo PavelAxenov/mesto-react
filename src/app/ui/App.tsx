@@ -3,9 +3,10 @@ import cls from './App.module.css'
 import { Header } from "./header/Header";
 import { Main } from "../../pages";
 import { Footer } from "../../shared/ui";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {fetchUser} from "../../entities/user";
 import {useAppDispatch} from "../../shared/lib";
+import {BrowserRouter, Route, Routes} from "react-router";
 
 const App = () => {
 	const dispatch = useAppDispatch()
@@ -20,7 +21,10 @@ const App = () => {
 			<div className={cls.page}>
 				<Header />
 
-				<Main />
+				<Routes>
+					<Route path="/" element={<Main />} />
+					<Route path="/profile" element={<div>profile page</div>} />
+				</Routes>
 
 				<Footer />
 			</div>
